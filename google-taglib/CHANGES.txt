@@ -1,4 +1,4 @@
-Version 1.0.1 (not yet released)
+Version 1.0.1 (released 20-Oct-2003)
   * Added a "type" attribute to the Search tag.
       - It can be used to specify the type of documents (e.g.: pdf) to be
         searched.
@@ -10,3 +10,6 @@ Version 1.0.1 (not yet released)
 Version 1.0 (released 10-Oct-2003)
   * This is the first public release.
   * Added support for various HTTP Proxy configuration context parameters.
+  
+===========================================================================
+$Id$

@@ -97,6 +97,8 @@ public class GoogleSearchBean
 
 	/**
 	 * The default filetype.
+	 * 
+	 * @since 1.0.1
 	 */
 	public static final String DEFAULT_TYPE = "";
 
@@ -173,7 +175,8 @@ public class GoogleSearchBean
 	 * Sets the search keywords.
 	 *
 	 * @param keywords The keywords
-     * @see #getKeywords() 
+	 * @see #getKeywords()
+	 * @since 1.0.1
 	 */
 	public final void setKeywords(String keywords)
 	{
@@ -184,7 +187,8 @@ public class GoogleSearchBean
 	 * Returns the keywords.
 	 *
 	 * @return The keywords value.
-     * @see #setKeywords(String)
+	 * @see #setKeywords(String)
+	 * @since 1.0.1
 	 */
 	public final String getKeywords()
 	{
@@ -601,10 +605,10 @@ public class GoogleSearchBean
 			{
 				return String.valueOf(result.getDocumentFiltering());
 			}
-            else if (property.equalsIgnoreCase("searchKeywords"))
-            {
-                return getKeywords();
-            }
+			else if (property.equalsIgnoreCase("searchKeywords"))
+			{
+				return getKeywords();
+			}
 			else if (property.equalsIgnoreCase("searchQuery"))
 			{
 				return result.getSearchQuery();
