@@ -47,6 +47,10 @@ To build the TLDs, do the following:
 
 	ant tlds
 	
+To build the release archives, do the following:
+
+	ant release
+	
 To build the Examples WAR, do the following:
 
 	ant examples
