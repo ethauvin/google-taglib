@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="google-rss" default="jar" basedir=".">
+	<description>Google RSS Tag Library</description>
+	<!-- Load the properties -->
+	<property file="build.properties"/>
+	<!-- Build Locations -->
+	<property name="build.library" value="${build.dir}/${project.name}"/>
+	<property name="build.ex" value="${build.dir}/${ex.dir}"/>
+	<property name="build.release" value="${build.dir}/${release.name}"/>
+	<!-- Jar excludes directories and files -->
+	<patternset id="jar.excludes">
+		<exclude name="**/*.java"/>
+		<exclude name="**/*.xml"/>
+		<exclude name="**/*.html"/>
+		<exclude name="**/.dependency-info/**"/>
+	</patternset>
+	<!-- Classpath -->
+	<path id="classpath">
+		<pathelement location="."/>
+		<pathelement location="${google.jar}"/>
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+			<include name="**/*.zip"/>
+		</fileset>
+	</path>
+	<!-- Prepare target -->
+	<target name="prepare">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+	</target>
+	<!-- Compile target -->
+	<target name="compile" depends="prepare" description="Compiles sources">
+		<mkdir dir="${build.library}"/>
+		<javac srcdir="${src.dir}" destdir="${build.library}" target="1.2">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+	<!-- JAR target -->
+	<target name="jar" depends="compile" description="Builds the JAR">
+		<!-- Create the JAR -->
+		<jar jarfile="${dist.dir}/${project.name}.jar">
+			<fileset dir="${build.library}">
+				<patternset refid="jar.excludes"/>
+			</fileset>
+		</jar>
+	</target>
+	<!-- TLD target -->
+	<target name="tld" description="Builds the TLD">
+		<!-- Copy the TLDs -->
+		<filter token="version" value="${version}"/>
+		<copy file="${tlds.dir}/${project.name}.tld" todir="${dist.dir}" filtering="true"/>
+	</target>
+	<!-- Release target -->
+	<target name="release" depends="jar,tld" description="Builds the release archives">
+		<mkdir dir="${build.release}"/>
+		<!-- Copy the TLD -->
+		<filter token="version" value="${version}"/>
+		<copy file="${tlds.dir}/${project.name}.tld" todir="${build.release}" filtering="true"/>
+		<!-- Copy the readme -->
+		<copy file="${doc.readme}" todir="${build.release}"/>
+		<!-- Copy the license -->
+		<copy file="${doc.license}" todir="${build.release}"/>
+		<!-- Copy the JAR -->
+		<copy file="${dist.dir}/${project.name}.jar" todir="${build.release}"/>
+		<!-- Freeze the mod dates -->
+		<touch>
+			<fileset dir="${build.release}"/>
+		</touch>
+		<!-- Create the ZIP archive -->
+		<zip destfile="${dist.dir}/${release.name}.zip" basedir="${build.dir}" includes="${release.name}/**"/>
+		<!-- Create the TAR archive -->
+		<tar tarfile="${dist.dir}/${release.name}.tar.gz" compression="gzip">
+			<tarfileset dir="${build.release}" prefix="${release.name}" mode="644"/>
+		</tar>
+	</target>
+	<!-- Examples target -->
+	<target name="examples" depends="jar,tld" description="Builds the Examples WAR">
+		<!-- Copy the WAR dir -->
+		<copy todir="${build.ex}">
+			<fileset dir="${ex.dir}"/>
+		</copy>
+		<!-- Copy the TLD -->
+		<copy file="${dist.dir}/${project.name}.tld" todir="${build.ex}/WEB-INF"/>
+		<!-- Copy the license -->
+		<copy file="${doc.license}" todir="${build.ex}"/>
+		<!-- Copy the JAR -->
+		<copy file="${dist.dir}/${project.name}.jar" todir="${build.ex}/WEB-INF/lib/"/>
+		<!-- Copy the Google JAR -->
+		<copy file="${google.jar}" todir="${build.ex}/WEB-INF/lib/"/>
+		<!-- Copy the Google TLD -->
+		<copy file="${google.tld}" todir="${build.ex}/WEB-INF/"/>
+		<!-- Freeze the mod dates -->
+		<touch>
+			<fileset dir="${build.ex}"/>
+		</touch>
+		<!-- Create the web archive -->
+		<jar jarfile="${dist.dir}/${ex.dir}-${version}.war" basedir="${build.ex}"/>
+	</target>
+	<!-- Clean Build target -->
+	<target name="clean-build" description="Cleans the build directory">
+		<delete quiet="true" includeEmptyDirs="true">
+			<fileset dir="${build.dir}" includes="*,*/**"/>
+		</delete>
+		<mkdir dir="${build.library}"/>
+	</target>
+	<!-- Clean target -->
+	<target name="clean" depends="clean-build" description="Cleans the build and dist directories">
+		<delete quiet="true" includeEmptyDirs="true">
+			<fileset dir="${dist.dir}" includes="*,*/**"/>
+		</delete>
+	</target>
+</project>

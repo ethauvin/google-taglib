@@ -1,0 +1,71 @@
+<!doctype HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Google RSS Tag Library Examples</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+	body {font-family:arial,sans-serif}
+-->
+</style>
+</head>
+<!--
+	Copyright (c) 2003-2004, Erik C. Thauvin
+	All rights reserved.
+-->
+<body bgcolor="#FFFFFF" text="#000000"> 
+<b><font size="+2">Google RSS Tag Library Examples</font></b> 
+<p>
+This is a collection of examples demonstrating the usage of the <a href="http://google-taglib.sourceforge.net">Google RSS JSP Tag Library</a>.
+</p>
+<p>
+The Google RSS Tag Library is an extension to the <a href="http://google-taglib.sourceforge.net">Google Tag Library</a>.
+</p>
+<p>
+The Google Web APIs Java library is required in order to use the Google RSS Tag 
+Library. The library's JAR file (<code>googleapi.jar</code>) should be placed 
+into the application's <code>WEB-INF/lib</code> directory.
+</p>
+<ul>
+	<li>
+		<a href="http://www.google.com/apis/download.html"><b>Download the Google Web 
+		APIs developer's kit</b></a>
+	</li>
+</ul>
+<p>
+You must also register with Google (free) in order to  obtain a license key. The 
+license key is required to access Google's Web Services.
+</p>
+<ul>
+	<li>
+		<a href="https://www.google.com/accounts/NewAccount"><b>Sign up for a Google 
+		account</b></a>
+</ul>
+<p>
+The license key can be specified as a context parameter in the web application 
+deployment descriptor (<code>web.xml</code>) as follows:
+</p>
+<blockquote>
+	<pre>&lt;context-param&gt;<br>  &lt;param-name&gt;google_key&lt;/param-name&gt;<br>  &lt;param-value&gt;000000000000000000000000&lt;/param-value&gt;<br>&lt;/context-param&gt;</pre>
+</blockquote>
+<p>
+The license key can also be temporarily specified using the following:
+</p>
+<ul>
+	<li>
+		<a href="key.html"><b>Set the Google Web APIs license key</b></a>
+	</li>
+</ul>
+<p>
+The included examples will allow you to:
+</p> 
+<ul> 
+  <li> <a href="search.html"><b>Perform a simple Google RSS search</b></a></li> 
+</ul>
+<p>&nbsp;</p> 
+<p>
+<small>The Google RSS Tag Library uses the Google Web APIs, but is not associated with or sponsored by Google, Inc.<br> 
+Click <a href="LICENSE.txt">here</a> for licensing information.</small>
+</p> 
+</body>
+</html>

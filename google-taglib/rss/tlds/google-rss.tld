@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<!-- Tag library descriptor -->
+<taglib>
+	<!-- The version number of this tag library -->
+	<tlibversion>@version@</tlibversion>
+	<!-- The JSP specification version required to function -->
+	<jspversion>1.1</jspversion>
+	<!-- The short name of this tag library -->
+	<shortname>google-rss</shortname>
+	<!-- Public URI that uniquely identifies this version of the tag library -->
+	<uri>http://www.thauvin.net/taglibs/google-rss-taglib-@version@</uri>
+	<!-- General information about this tag library -->
+	<info>The Google RSS Tag Library.</info>
+	<!-- SearchResults Tag -->
+	<tag>
+		<name>searchResults</name>
+		<tagclass>com.clevercactus.google.taglibs.SearchResults</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Displays Google search results in RSS format.</info>
+	</tag>
+</taglib>
