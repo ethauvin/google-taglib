@@ -7,7 +7,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module filepath="$PROJECT_DIR$/GoogleTagLib.iml" />
+      <module filepath="C:\projects\sourceforge\google-taglib\GoogleTagLib.iml" />
     </modules>
   </component>
   <component name="libraryTable" />
@@ -80,14 +80,14 @@
     <root url="file://$PROJECT_DIR$/google-examples" name="google-examples" validate="false" />
   </component>
   <component name="DataSourceManager" />
+  <component name="J2EEManager">
+    <integrations />
+  </component>
   <component name="ImportConfiguration">
     <option name="VENDOR" value="erik" />
     <option name="RELEASE_TAG" value="start" />
     <option name="LOG_MESSAGE" value="Initial import" />
     <option name="CHECKOUT_AFTER_IMPORT" value="false" />
-  </component>
-  <component name="Timestamp">
-    <Timestamp type="block" place="atCaret" userText="Edited by ${user.name}:" timeFormat="dd-MMM-yyyy hh:mm:ss aa zz" />
   </component>
   <component name="uidesigner-configuration">
     <option name="INSTRUMENT_CLASSES" value="true" />
