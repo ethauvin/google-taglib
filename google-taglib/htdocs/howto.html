@@ -1,0 +1,441 @@
+<html>
+<head>
+<link rel="stylesheet" href="includes/google.css">
+<title>Google Tag Library - HowTo</title>
+<style type="text/css">
+body,td,font,.p,a{font-family:arial,sans-serif}
+.indent { margin-left: 1em; margin-right: 1em;}
+</style>
+</head>
+<body class="siteowners" bgcolor="#ffffff" text="#000000" link="#0000CC" vlink="#800080" alink="#ff0000" topmargin="2">
+<table width="95%" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+		<td width="1%"><a href="index.html"><img src="images/google_sm.gif" border="0" width="143" height="37" alt="Return to Google homepage." vspace="5"></a></td>
+		<td valign="middle" bgcolor="#eeeeee"><h1 style="margin-top:10px">
+			<table width="100%">
+				<tr>
+					<td>
+						<p>
+						<b>&nbsp;Google Tag Library </b>
+						</p>
+					</td>
+				</tr>
+			</table>
+			</h1></td>
+	</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+	<tr>
+		<td width="143" valign="top">
+			<p>
+			<small><br>
+			&nbsp;&nbsp;<a href="index.html">Overview</a> <br>
+			&nbsp;&nbsp;<a href="http://sourceforge.net/project/showfiles.php?group_id=90444">Download</a> <br>
+			&nbsp;&nbsp;<a href="docs.html">Documentation</a> <br>
+			<img src="images/yellowarrow.gif" alt="arrow" width="4" height="8"><b>&nbsp;<font color="#CC9900">HowTo</font></b>
+			<br>
+			&nbsp;&nbsp;<a href="javadoc/index.html">Javadoc</a> <br>
+			&nbsp;&nbsp;<a href="about.html">About</a> </small>
+			</p>
+			<img alt="" width="143" height="0">
+			<table cellpadding="1" width="120">
+				<tr>
+					<td style="background-color: #efefef"><small>
+						<!-- <div class="sidesearch">
+							<form action="http://googlesite.google.com/search" method="get">
+								<div align="center">
+									<font size="-2"><input type="hidden" name="output" value="googleabout"><input type="hidden" name="site" value="googlesite">
+									<i>Find on this site:</i> <br>
+									<input type="text" name="q" size="10"><br><input type="submit" value="Search" name="submit">
+									<br>
+									</font>
+								</div>
+							</form>
+						</div> -->
+						</small>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td style="background-color: #cccccc" width="1" valign="top"><img alt="" width="1" height="1"></td>
+		<td style="background-color: #ffffff" width="10" valign="top"><img alt="" width="1" height="1"></td>
+		<a name="top"></a>
+		<td valign="top">
+			<p>
+			<b><font face="arial, sans-serif">&nbsp;Google Tag Library HowTo</font></b>
+			</p>
+			<table cellpadding="2" width="100%" border="0">
+				<tr>
+					<td style="background-color: #fff9e4"><font face="arial, sans-serif"><b>Contents</b></font></td>
+				</tr>
+			</table>
+			<p>
+			<font size="-1"><b>&nbsp; &nbsp; 1. <a href="#search">Search &amp; Display the 
+			Results of a Goggle Search</a></b> </font>
+			<blockquote>
+				<font size="-1">1.1 <a href="#1_1">Create a Search Form </a> <br>
+				1.2 <a href="#1_2">Create a Result Page</a> <br>
+				1.3 <a href="#1_3">Display the Results </a> </font>
+			</blockquote>
+			<font size="-1">
+			<p>
+			<b>&nbsp; &nbsp; 2. <a href="#cached">Display a Page Cached by Goggle</a></b> </font>
+			<blockquote>
+				<font size="-1">2.1 <a href="#2_1">Create a Search From </a> <br>
+				2.2 <a href="#2_2">Create a Result Page</a> <br>
+				2.3 <a href="#2_3">Display the Cached Page</a></font>
+			</blockquote>
+			<font size="-1">
+			<p>
+			</p>
+			<b>&nbsp; &nbsp; 3. <a href="#spelling">Display a Goggle Spelling Suggestion </a></b></font>
+			<blockquote>
+				<font size="-1">3.1 <a href="#3_1">Create a Search Form</a> <br>
+				3.2 <a href="#3_2">Create a Result Page </a> <br>
+				3.3 <a href="#3_3">Display the Spelling Suggestion </a> <br>
+				</font>
+			</blockquote>
+			<a name="search" id="search"></a>
+			<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+				<tr>
+					<td style="background-color: #fff9e4" width="80%"><b>1. Search &amp; Display the 
+					Results of a Google Search </b></td>
+				</tr>
+			</table>
+			<p>
+			<blockquote>
+				<a name="1_1"></a>
+				<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+					<tr colspan="2">
+						<td style="background-color: #fff9e4" width="80%"><b>1.1 Create a Search From </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">Create the following HTML form on your search page:</font>
+				<p>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="#0000FF">&lt;form </font><font color="#FF0000">action=</font>&quot;results.jsp&quot;
+							<font color="#0000FF">&gt;</font> <br>
+							&nbsp;&nbsp;<font color="#0000FF">&lt;input </font><font color="#FF0000">type=</font>&quot;text&quot;
+							<font color="#FF0000">name=</font>&quot;q&quot;<font color="#0000FF">&gt;</font> <br>
+							&nbsp;&nbsp;<font color="#0000FF">&lt;input </font><font color="#FF0000">type=</font>&quot;submit&quot;
+							<font color="#0000FF">&gt;</font></code><code><br>
+							<font color="#0000FF">&lt;/form&gt;</font></code></td>
+						<td><img src="images/arrow.jpg" alt="arrow" width="35" height="28"></td>
+						<td><img src="images/search.jpg" alt="search" width="268" height="24"></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <em>q</em> parameter is required and used to store the 
+				search query string. <br>
+				The form <em>action</em> points to the <em>results.jsp</em> page, which is 
+				created in step <a href="#1_2">1.2</a>.</font>
+				<p>
+				<font size="-1" color="gray">The Google Web APIs authentication key can be 
+				specified as an hidden form input parameter: <br>
+				</font>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="gray">&lt;input type=&quot;hidden&quot; name=&quot;key&quot; 
+						value=&quot;000000000000000000000000&quot;&gt;</font></code></td>
+					</tr>
+				</table>
+				<p>
+				<p>
+				<a name="1_2"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr colspan="2">
+						<td style="background-color: #fff9e4" width="80%"><b>1.2 Create a Results Page </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">Create a page called <em>results.jsp</em> containing:</font>
+				<p>
+				<table cellspacing="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowarp><code><font color="#009900">&lt;%@taglib uri=</font>&quot;/google-taglib&quot;
+							<font color="#009900">prefix=</font>&quot;google&quot;<font color="#009900">%&gt;</font>
+							<br>
+							<font color="#CC6600">&lt;google:search/&gt;</font></code></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <em>taglib</em> directive is used to specify the Google Tag 
+				library reference and prefix. <br>
+				The <em>&lt;google:search/&gt;</em> tag is used to perform the query.</font>
+				<p>
+				<font size="-1" color="gray">The Google Web APIs authentication key can be 
+				specified as a tag attribute: <br>
+				</font>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="gray">&lt;google:search key=&quot;000000000000000000000000&quot;/&gt;</font></code></td>
+					</tr>
+				</table>
+				<p>
+				<a name="1_3"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr colspan="2">
+						<td style="background-color: #fff9e4" width="80%"><font face="arial, sans-serif">
+							<b>1.3 Display the Search Results </b></font></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="#0000FF">&lt;ol&gt;</font> <br>
+							<font color="#CC6600">&lt;google:searchResult&gt;</font> <br>
+							&nbsp;&nbsp;<font color="#0000FF">&lt;li&gt;</font><font color="#CC6600">&lt;google:element 
+							name</font>=&quot;title-url&quot;<font color="#CC6600">/&gt;</font><font color="#0000FF">&lt;/li&gt;</font>
+							<br>
+							<font color="#CC6600">&lt;/google:searchResult&gt;</font> <br>
+							<font color="#0000FF">&lt;/ol&gt;</font></code></td>
+						<td><img src="images/arrow.jpg" alt="arrow" width="35" height="28"></td>
+						<td><img src="images/searchresults.jpg" alt="searchresults" width="196" height="72"></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <em>&lt;google:searchResult/&gt;</em> tag is used to loop 
+				through the results. <br>
+				The <em>&lt;google:element/&gt;</em> tag is used to display the attributes of 
+				the current result set element.</font>
+			</blockquote>
+			<a name="cached" id="cached"></a>
+			<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+				<tr>
+					<td style="background-color: #fff9e4"><font face="arial, sans-serif"><b>2. 
+					Display a Page Cached by Google </b></font></td>
+				</tr>
+			</table>
+			<blockquote>
+				<a name="2_1"></a>
+				<p>
+				<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+					<tr colspan="2">
+						<td style="background-color: #fff9e4" width="80%"><b>2.1 Create a Search From</b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">Create the following HTML form on your search page:</font>
+				<p>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="#0000FF">&lt;form </font><font color="#FF0000">action=</font>&quot;results.jsp&quot;
+							<font color="#0000FF">&gt;</font> <br>
+							&nbsp;&nbsp;<font color="#0000FF">&lt;input </font><font color="#FF0000">type=</font>&quot;text&quot;
+							<font color="#FF0000">name=</font>&quot;q&quot;<font color="#0000FF">&gt;</font> <br>
+							&nbsp;&nbsp;<font color="#0000FF">&lt;input </font><font color="#FF0000">type=</font>&quot;submit&quot;
+							<font color="#0000FF">&gt;</font></code><code><br>
+							<font color="#0000FF">&lt;/form&gt;</font></code></td>
+						<td><img src="images/arrow.jpg" alt="arrow" width="35" height="28"></td>
+						<td><img src="images/cached.jpg" alt="search" width="268" height="26"></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <em>q</em> parameter is required and used to store the 
+				search query string. <br>
+				The form <em>action</em> points to the <em>results.jsp</em> page, which is 
+				created in step <a href="#2_2">2.2</a>.</font>
+				<p>
+				<font size="-1" color="gray">The Google Web APIs authentication key can be 
+				specified as an hidden form input parameter: <br>
+				</font>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="gray">&lt;input type=&quot;hidden&quot; name=&quot;key&quot; 
+						value=&quot;000000000000000000000000&quot;&gt;</font></code></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1"></font>
+				<p>
+				<a name="2_2"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr colspan="2">
+						<td width="80%" height="23" style="background-color: #fff9e4"><b>2.2 Create a 
+						Result Page </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<p>
+				<font size="-1">Create a page called <em>results.jsp</em> containing:</font>
+				<p>
+				<table cellspacing="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowarp><code><font color="#009900">&lt;%@taglib uri=</font>&quot;/google-taglib&quot;
+							<font color="#009900">prefix=</font>&quot;google&quot;<font color="#009900">%&gt;</font></code></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <em>taglib</em> directive is used to specify the Google Tag 
+				library reference and prefix.</font>
+				<p>
+				<a name="2_3"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr colspan="2">
+						<td style="background-color: #fff9e4" width="80%"><b>2.3 Display the Cached Page </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="#CC6600">&lt;google:cachedPage/&gt;</font></code></td>
+						<td><img src="images/arrow.jpg" alt="arrow" width="35" height="28"></td>
+						<td><img src="images/cachedresults.jpg" alt="searchresults" width="160" height="147"></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <em>&lt;google:cachedPage&gt;</em> tag is used to display 
+				the content of the cached page.</font>
+				<p>
+				<font size="-1" color="gray">The Google Web APIs authentication key can be 
+				specified as a tag attribute: <br>
+				</font>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="gray">&lt;google:cachedPage key=&quot;000000000000000000000000&quot;/&gt;</font></code></td>
+					</tr>
+				</table>
+				<p>
+			</blockquote>
+			<p>
+			<a name="spelling" id="spelling"></a>
+			<table cellpadding="2" width="100%" border="0">
+				<tr>
+					<td style="background-color: #fff9e4"><b>3. Display a Google Spelling Suggestion </b></td>
+				</tr>
+			</table>
+			<blockquote>
+				<a name="3_1"></a>
+				<p>
+				<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+					<tr colspan="2">
+						<td style="background-color: #fff9e4" width="80%"><b>3.1 Create a Search Form</b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1"></font>
+				<p>
+				<font size="-1">Create the following HTML form on your search page:</font>
+				<p>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="#0000FF">&lt;form </font><font color="#FF0000">action=</font>&quot;results.jsp&quot;
+							<font color="#0000FF">&gt;</font> <br>
+							&nbsp;&nbsp;<font color="#0000FF">&lt;input </font><font color="#FF0000">type=</font>&quot;text&quot;
+							<font color="#FF0000">name=</font>&quot;q&quot;<font color="#0000FF">&gt;</font> <br>
+							&nbsp;&nbsp;<font color="#0000FF">&lt;input </font><font color="#FF0000">type=</font>&quot;submit&quot;
+							<font color="#0000FF">&gt;</font></code><code><br>
+							<font color="#0000FF">&lt;/form&gt;</font></code></td>
+						<td><img src="images/arrow.jpg" alt="arrow" width="35" height="28"></td>
+						<td><img src="images/spelling.jpg" alt="search" width="269" height="26"></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <em>q</em> parameter is required and used to store the 
+				search query string. <br>
+				The form <em>action</em> points to the <em>results.jsp</em> page, which is 
+				created in step <a href="#3_2">3.2</a>.</font> <font size="-1"></font>
+				<p>
+				<font size="-1" color="gray">The Google Web APIs authentication key can be 
+				specified as an hidden form input parameter: <br>
+				</font>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="gray">&lt;input type=&quot;hidden&quot; name=&quot;key&quot; 
+						value=&quot;000000000000000000000000&quot;&gt;</font></code></td>
+					</tr>
+				</table>
+				<p>
+				<a name="3_2"></a>
+				<p>
+				<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+					<tr colspan="2">
+						<td style="background-color: #fff9e4" width="80%"><b>3.2 Create a Result Page </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1"></font>
+				<p>
+				<font size="-1">Create a page called <em>results.jsp</em> containing:</font>
+				<p>
+				<table cellspacing="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowarp><code><font color="#009900">&lt;%@taglib uri=</font>&quot;/google-taglib&quot;
+							<font color="#009900">prefix=</font>&quot;google&quot;<font color="#009900">%&gt;</font></code></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <em>taglib</em> directive is used to specify the Google Tag 
+				library reference and prefix.</font>
+				<p>
+				<a name="3_3"></a>
+				<p>
+				<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+					<tr colspan="2">
+						<td style="background-color: #fff9e4" width="80%"><b>3.3 Display the Spelling 
+						Suggestion </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1"></font>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="#CC6600">&lt;google:spelling/&gt;</font></code></td>
+						<td><img src="images/arrow.jpg" alt="arrow" width="35" height="28"></td>
+						<td nowrap>long knives</td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <em>&lt;google:spelling&gt;</em> tag is used to display the 
+				suggested spelling for the given query.</font>
+				<p>
+				<font size="-1" color="gray">The Google Web APIs authentication key can be 
+				specified as a tag attribute: <br>
+				</font>
+				<table cellpadding="5">
+					<tr>
+						<td width="5">&nbsp;</td>
+						<td nowrap><code><font color="gray">&lt;google:spelling key=&quot;000000000000000000000000&quot;/&gt;</font></code></td>
+					</tr>
+				</table>
+				<p>
+			</blockquote>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

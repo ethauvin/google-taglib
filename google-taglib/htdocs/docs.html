@@ -1,0 +1,831 @@
+<html>
+<head>
+<link rel="stylesheet" href="includes/google.css">
+<title>Google Tag Library - Documentation</title>
+<style type="text/css">
+body,td,font,.p,a{font-family:arial,sans-serif}
+.indent {margin-left: 1em; margin-right: 1em;}
+code {font-size:10pt}
+</style>
+</head>
+<body class="siteowners"  bgcolor="#ffffff" text="#000000" link="#0000CC" vlink="#800080" alink="#ff0000" topmargin="2">
+<table width="95%" border="0" cellspacing="0" cellpadding="2">
+	<tr>
+		<td width="1%"><a href="index.html"><img src="images/google_sm.gif" border="0" width="143" height="37" alt="Return to Google homepage." vspace="5"></a></td>
+		<td valign="middle" bgcolor="#eeeeee"><h1 style="margin-top:10px">
+			<table width="100%">
+				<tr>
+					<td>
+						<p>
+						<b>&nbsp;Google Tag Library </b>
+						</p>
+					</td>
+				</tr>
+			</table>
+			</h1></td>
+	</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+	<tr>
+		<td width="143" valign="top">
+			<p>
+			<small><br>
+			&nbsp;&nbsp;<a href="index.html">Overview</a> <br>
+			&nbsp;&nbsp;<a href="http://sourceforge.net/project/showfiles.php?group_id=90444">Download</a> <br>
+			<img src="images/yellowarrow.gif" alt="arrow" width="4" height="8"><b>&nbsp;<font color="#CC9900">Documentation</font></b>
+			<br>
+			&nbsp;&nbsp;<a href="howto.html">HowTo</a> <br>
+			&nbsp;&nbsp;<a href="javadoc/index.html">Javadoc</a> <br>
+			&nbsp;&nbsp;<a href="about.html">About</a> </small>
+			</p>
+			<img width="145" height="0" alt="">
+			<table cellpadding="1" width="120">
+				<tr>
+					<td style="background-color: #efefef"><small>
+						<!-- <div class="sidesearch">
+							<form action="http://googlesite.google.com/search" method="get">
+								<div align="center">
+									<font size="-2"><input type="hidden" name="output" value="googleabout"><input type="hidden" name="site" value="googlesite">
+									<i>Find on this site:</i><br>
+									<input type="text" name="q" size="10"><br><input type="submit" value="Search" name="submit">
+									<br>
+									</font>
+								</div>
+							</form>
+						</div> -->
+						</small>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td style="background-color: #cccccc" width="1" valign="top"><img alt="" width="1" height="1"></td>
+		<td style="background-color: #ffffff" width="10" valign="top"><img alt="" width="1" height="1"></td>
+		<a name="top"></a>
+		<td valign="top">
+			<p>
+			<b><font face="arial, sans-serif">Google Tag Library Documentation </font></b>
+			</p>
+			<table cellpadding="2" width="100%" border="0">
+				<tr>
+					<td style="background-color: #fff9e4"><font face="arial, sans-serif"><b>Contents</b></font></td>
+				</tr>
+			</table>
+			<p>
+			<font size="-1"><b>&nbsp; &nbsp; 1. <a href="#ov">Overview</a></b></font>
+			<blockquote>
+				<font size="-1">1.1  <a href="#1_1">Installation</a><br>
+				1.2  <a href="#1_2">Google API Library</a><br>
+				1.3  <a href="#1_3">TagLib Directive </a></font>
+			</blockquote>
+			<p>
+			<font size="-1"><b>&nbsp; &nbsp; 2. <a href="#search">Search Tags </a></b></font>
+			<font size="-1">&nbsp;</font>
+			<blockquote>
+				<font size="-1">2.1  <a href="#2_1">Search Tag</a><br>
+				2.2  <a href="#2_2">SearchResult Tag </a><br>
+				2.3  <a href="#2_3">Element Tag</a><br>
+				2.4  <a href="#2_4">Next &amp; Previous Tags</a><br>
+				2.5  <a href="#2_5">StartIndex &amp; EndIndex Tags</a><br>
+				2.6  <a href="#2_6">EstimatedTotal Tag</a><br>
+				2.7  <a href="#2_7">SearchComments Tag</a><br>
+				2.8  <a href="#2_8">SearchQuery Tag</a><br>
+				2.9  <a href="#2_9">SearchTime Tag</a><br>
+				2.10 <a href="#2_10">SearchTips Tag</a><br>
+				</font>
+			</blockquote>
+			<p>
+			<font size="-1"><b>&nbsp; &nbsp; 3. <a href="#cached">CachedPage &amp; Spelling 
+			Tags</a></b></font> <font size="-1">&nbsp;</font>
+			<blockquote>
+				<font size="-1">3.1  <a href="#3_1">CachedPage Tag </a><br>
+				3.2  <a href="#3_2">Spelling Tag </a></font>
+			</blockquote>
+			<a name="ov"></a>
+			<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+				<tr>
+					<td style="background-color: #fff9e4"><b>1. Overview</b><font size="-1">&nbsp; &nbsp; 
+					&nbsp; &nbsp; &nbsp; </font></td>
+				</tr>
+			</table>
+			<p>
+			<font size="-1">This document explains in detail the semantics of the JSP tags 
+			provided by the Google Tag Library. In this document, you will learn:</font>
+			<ul>
+				<li>
+					<font size="-1">How to install the Google Tag Library.</font>
+				</li>
+				<li>
+					<font size="-1">How to use the various Search, CachedPage and Spelling tags. </font>
+				</li>
+				<li>
+					<font size="-1">How to customize searches and interpret the search results data.</font>
+				</li>
+
+			</ul>
+			<p>
+			<font size="-1">You may also find the following helpful:</font>
+			<ul>
+				<li>
+					<font size="-1">The Google Tag Library <a href="howto.html">HowTo</a>.</font>
+				</li>
+				<li>
+					<font size="-1">The Google Tag Library <a href="javadoc/">Javadoc</a> documention.</font>
+				</li>
+			</ul>
+			<p>
+			<font size="-1">If you have comments, find errors, or just have questions, 
+			please visit the <a href="http://sourceforge.net/projects/google-taglib/">project's support area</a>.</font>
+			<p>
+
+			<blockquote>
+				<a name="1_1"></a>
+
+				<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>1.1 Installation </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The Google Tag Library requires a JSP (1.1 or higher) container, 
+				such as <a href="http://jakarta.apache.org/tomcat/">Tomcat</a>.</font>
+				<p>
+				<font size="-1">To use the Google Tag Library, simply copy the library's JAR 
+				file (<code>google.jar</code>) to your application's <code>WEB-INF/lib</code> 
+				directory. The Tag Library Descriptor (<code>google.tld</code>) should be placed 
+				in your application's <code>WEB-INF</code> directory.</font>
+				<p>
+				<font size="-1">You should also modify your web application deployment 
+				descriptor (<code>web.xml</code>) file to map the Google Tag Library TLD URI to 
+				its location:</font>
+				<blockquote>
+					<pre>&lt;taglib&gt;<br>  &lt;taglib-uri&gt;/google-taglib&lt;/taglib-uri&gt;<br>  &lt;taglib-location&gt;/WEB-INF/google.tld&lt;/taglib-location&gt;<br>&lt;/taglib&gt;</pre>
+				</blockquote>
+				<p>
+				<a name="1_2"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>1.2 Google API Library </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The Google Web APIs Java  library is required in order to use
+				the Google Tag Library. The library is included in the <a href="http://www.google.com/apis/download.html">Google Web APIs developer's kit</a>. 
+				The library's JAR file (<code>googleapi.jar</code>) should be placed into your 
+				application's <code>WEB-INF/lib</code> directory.</font>
+				<p>
+				<font size="-1">You must also <a href="https://www.google.com/accounts/NewAccount">register with Google</a> (free) in order to  obtain a 
+				license key. The license key is required to access Google's Web Services.</font>
+				<p>
+				<font size="-1">The license key can be specified as a context parameter in your 
+				web application deployment descriptor (<code>web.xml</code>) as follows:</font>
+				<blockquote>
+				  <pre>&lt;context-param&gt;<br>  &lt;param-name&gt;google_key&lt;/param-name&gt;<br>  &lt;param-value&gt;000000000000000000000000&lt;/param-value&gt;<br>&lt;/context-param&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">The license key can also be specified using the <code>key</code> 
+				search form parameter, <code>key</code> tag attribute or the <code>google_key</code> 
+				application scope attribute.</font>
+				<p>
+				<a name="1_3"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><font face="arial, sans-serif"><b>1.3 
+						TagLib Directive </b></font></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">Using the Google Tag Library is easy; you simply need to import 
+				it into your JSP pages using the taglib directive. For instance, you would 
+				include the following line at the top of your JSP page:</font>
+				<blockquote>
+					<pre>&lt;%@taglib uri=&quot;/google-taglib&quot; prefix=&quot;google&quot;%&gt;</pre>
+				</blockquote>
+			</blockquote>
+			<p>
+			<a name="search" id="search"></a>
+			<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+				<tr>
+					<td style="background-color: #fff9e4"><font face="arial, sans-serif"><b>2. Search 
+					Tags </b></font></td>
+				</tr>
+			</table>
+			<blockquote>
+				<a name="2_1"></a>
+				<p>
+				<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>2.1 Search Tag </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <code>&lt;google:search/&gt;</code> tag is used to perform 
+				searches on Google's index of over 2 billion web pages.</font>
+				<p>
+				<font size="-1"><strong>Tag Syntax</strong></font>
+				<p>
+				<font size="-1">The search query can be specified directly in the tag <em>body </em>, 
+				e.g.:</font>
+				<blockquote>
+					<pre>&lt;google:search&gt;my search query&lt;/google:search&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">or via the <em>q</em> request parameter:</font>
+				</p>
+				<blockquote>
+					<pre>(search page) <br>&lt;form action="search.jsp" &gt;<br>  &lt;input type= text" name="q"&gt;<br>  ...<br>&lt;/form&gt;<br> <br>(result page)<br>&lt;google:search/&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">Similarly the <code>&lt;google:search/&gt;</code> tag options 
+				can be specified as attributes, e.g.:</font>
+				<blockquote>
+					<pre>&lt;google:search start ="10" maxResults ="5" / &gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">or via request parameters:</font>
+				</p>
+				<blockquote>
+					<pre>(search page)<br>&lt;form action="search.jsp" &gt; <br>  &lt;input type="hidden" name="start" value="10"&gt; <br>  &lt;input type="hidden" name="maxResults" value="5"&gt;<br>  ...<br>&lt;/form&gt;<br> <br>(result page)<br>&lt;google:search/&gt;</pre>
+				</blockquote>
+				<p>
+				<strong><font size="-1">Tag Attributes / Request Parameters</font></strong>
+				<p>
+				<table border="1" cellpadding="3" cellspacing="0">
+					<tr>
+						<td style="background-color: #fff9e4" valign="top" width="20%">
+							<div align="center">
+								<font size="-1"><b>Name</b></font>
+							</div>
+						</td>
+						<td style="background-color: #fff9e4" valign="top" width="80%">
+							<div align="center">
+								<font size="-1"><b>Description</b></font>
+							</div>
+						</td>
+
+						<td style="background-color: #fff9e4" valign="top">
+							<div align="center">
+								<font size="-1"><b>Default<br>
+								Value</b></font>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>key</b></font>
+							</div>
+						</td>
+						<td><font size="-1">Provided by Google, this is required for you to access the 
+						Google service. Google uses the key for authentication and logging.</font></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>q</b></font>
+							</div>
+						</td>
+						<td><font size="-1">The search query string.<br>
+							<b>Note: </b>There is no q attribute. The query is specified directly within the 
+							body of the tag.</font></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>start</b></font>
+							</div>
+						</td>
+						<td><font size="-1">Zero-based index of the first desired result.</font></td>
+						<td>
+							<div align="center">
+								<font size="-1">0</font>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>maxResults</b></font>
+							</div>
+						</td>
+						<td><font size="-1">Number of results desired per query. The maximum value per 
+						query is 10.<br>
+							<b>Note:</b> If you do a query that doesn't have many matches, the actual number 
+							of results you get may be smaller than what you request.</font></td>
+						<td>
+							<div align="center">
+								<font size="-1">10</font>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>filter</b></font>
+							</div>
+						</td>
+						<td><font size="-1">Activates or deactivates automatic results filtering, which 
+						hides very similar results and results that all come from the same web host. 
+						Filtering tends to improve the end user experience on Google, but for your 
+						application you may prefer to turn it off.</font></td>
+						<td>
+							<div align="center">
+								<font size="-1">true</font>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>restricts</b></font>
+							</div>
+						</td>
+						<td><font size="-1">Restricts the search to a subset of the Google web index, 
+						such as a country like &quot;Ukraine&quot; or a topic like &quot;Linux.&quot;</font></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>safeSearch</b></font>
+							</div>
+						</td>
+						<td><font size="-1">A Boolean value which enables filtering of adult content in 
+						the search results.</font></td>
+						<td>
+							<div align="center">
+								<font size="-1">false</font>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>lr</b></font>
+							</div>
+						</td>
+						<td><font size="-1"><i>Language Restrict</i> - Restricts the search to documents 
+						within one or more languages.</font></td>
+						<td>
+							<div align="center">
+								<font size="-1">latin1</font>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3"><font size="-1" color="gray">The parameters listed below are not 
+						part of the Google Web APIs.</font></td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>cache</b></font>
+							</div>
+						</td>
+						<td><font size="-1">By default the search results are cached between search requests. To ensure that a new query has been specified set this parameter to <em>false</em>.</font></td>
+						<td>
+							<div align="center">
+								<font size="-1">true</font>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>site</b></font>
+							</div>
+						</td>
+						<td><font size="-1">Restricts the search to documents  within the specfied
+						site.</font></td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">For detailed information on the above Google search options, 
+				please refer to the <a href="http://www.google.com/apis/reference.html">Google 
+				Web APIs</a> documentation.</font>
+				<p>
+				<a name="2_2"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td width="80%" height="23" style="background-color: #fff9e4"><b>2.2 
+						SearchResult Tag </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <code>&lt;google:searchResult/&gt;</code> tag is used to 
+				loop through the results returned by of a Google search. </font>
+				<p>
+				<font size="-1"><strong>Tag Syntax</strong></font> <font size="-1">
+				<p>
+				The search results can be displayed using an HTML ordered list: </font>
+				<blockquote>
+					<pre>&lt;ol&gt;<br>&lt;google:searchResult&gt;<br>  &lt;li&gt;&lt;google:element name="title-url"/&gt;&lt;/li&gt;<br>&lt;/google:searchResult&gt;<br>&lt;/ol&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">The <code><a href="#2_3">&lt;google:element/&gt;</a></code> tag 
+				is used to display the details of the current result set item.</font>
+				<p>
+
+				<a name="2_3"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>2.3 Element Tag </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <code>&lt;google:element/&gt;</code> tag is used to display 
+				the properties of the current result set item. It can only be used inside the <a href="#2_2">
+				<code>&lt;google:searchResult/&gt;</code></a> tag.</font>
+				<p>
+				<font size="-1"><strong>Tag Syntax</strong></font> <font size="-1">
+				<p>
+				The URL property of the search results can be displayed as follows: </font>
+				<blockquote>
+					<pre>&lt;google:searchResult&gt;<br>  &lt;google:element name="url"/&gt;&lt;br&gt;<br>&lt;/google:searchResult&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">The <em>name </em> attribute is used to specify the desired 
+				property of the current result set item.</font>
+				</p>
+				<p>
+				<strong><font size="-1">Name Attributes Values</font></strong>
+				</p>
+				<table border="1" cellpadding="3" cellspacing="0">
+					<tr>
+						<td style="background-color: #fff9e4" valign="top" width="20%">
+							<div align="center">
+								<font size="-1"><b>Name</b></font>
+							</div>
+						</td>
+						<td style="background-color: #fff9e4" valign="top" width="80%">
+							<div align="center">
+								<font size="-1"><b>Description</b></font>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>summary</b></font>
+							</div>
+						</td>
+						<td><font size="-1">The search result has a listing in the ODP directory, the 
+						ODP summary appears here as a text string.</font> </td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>URL</b></font>
+							</div>
+						</td>
+						<td><font size="-1">The URL of the search result, returned as text, with an 
+						absolute URL path.</font> </td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>snippet</b></font>
+							</div>
+						</td>
+						<td><font size="-1">A snippet which shows the query in context on the URL where 
+						it appears.</font> </td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>title</b></font>
+							</div>
+						</td>
+						<td><font size="-1">The title of the search result, returned as HTML.</font> </td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>cachedSize</b></font>
+							</div>
+						</td>
+						<td><font size="-1">Indicates that a cached version of the URL is available; 
+						size is indicated in kilobytes.</font> </td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>relatedInformationPresent</b></font>
+							</div>
+						</td>
+						<td><font size="-1">Boolean indicating that the "related:" query term is 
+						supported for this URL. </font> </td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>hostName</b></font>
+							</div>
+						</td>
+						<td><font size="-1">When filtering occurs, a maximum of two results from any 
+						given host is returned. When this occurs, the second result element that comes 
+						from that host contains the host name in this parameter.</font></td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>directoryTitle</b></font>
+							</div>
+						</td>
+						<td><font size="-1">The title that appears in the ODP directory, if any.</font> </td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>directoryCategoryName</b></font>
+							</div>
+						</td>
+						<td><font size="-1">The ODP directory name for the current ODP category.</font> </td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>directoryCategoryEncoding</b></font>
+							</div>
+						</td>
+						<td><font size="-1">Specifies the encoding scheme of the directory information.</font></td>
+					</tr>
+					<tr>
+						<td colspan="2"><font size="-1" color="gray">The properties listed below are not 
+						part of the Google Web APIs.</font></td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>relatedQuery</b></font>
+							</div>
+						</td>
+						<td><font size="-1">The related query, suitable for use with <em>q</em> 
+						request parameter of the <code><a href="#2_1">&lt;google:search/&gt;</a></code> 
+						tag.<br>For example: <code>related:www.example.com/search?q=vacation%20hawaii</code></font></td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>cachedQuery</b></font>
+							</div>
+						</td>
+						<td><font size="-1">The cached query, suitable for use with the <em>q</em> 
+						request parameter of the <code><a href="#3_1">&lt;google:cachedPage/&gt;</a></code> 
+						tag.<br>For example: <code>www.example.com/search?q=vacation%20hawaii</code></font> </td>
+					</tr>
+					<tr>
+						<td>
+							<div align="center">
+								<font size="-1"><b>staticQuery</b></font>
+							</div>
+						</td>
+						<td><font size="-1">The static query, suitable for display.<br>For example: <code>www.example.com/search?q=vacation hawaii</code></font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">For detailed information on the above Google search elements 
+				options, please refer to the <a href="http://www.google.com/apis/reference.html">Google 
+				Web APIs</a> documentation.</font>
+				<p>
+				<strong><font size="-1"><a name="autolink"></a>Automatic Link Creation</font></strong>
+				<p>
+				<font size="-1">The name of two properties can be combined to automatically 
+				generate properly formatted HTML links. For example, to automatically create a 
+				link whose location is the URL of the current element and whose text is the 
+				current element's title use the following syntax:</font>
+				<blockquote>
+					<pre>&lt;google:element name="title-url"/&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">which will automatically generate a property formatted HTML link:</font>
+				<blockquote>
+					<pre>&lt;a href="[url]"&gt;[title]&lt;/a&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">Additionally, the link's target and style options can be specify 
+				using the <em>target</em>, <em>style</em> and <em>css</em> attributes of the <code>&lt;google:element/&gt;</code> 
+				tag: </font>
+				<blockquote>
+					<pre>&lt;google:element name="title-url" target="_blank" style="text-decoration:none" css=&quot;c&quot;/&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">which will generate:</font>
+				<blockquote>
+					<pre>&lt;a href="[url]" target="_blank" class=&quot;c&quot; style="text-decoration:none"&gt;[title]&lt;/a&gt;</pre>
+				</blockquote>
+				<p>
+				<a name="2_4"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>2.4 Next &amp; Previous 
+						Tags </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <code>&lt;google:next/&gt;</code> tag is used to
+
+
+				used to display a link to more search results.<br>
+				The <code>&lt;google:previous/&gt;</code> tag is used to used to display a link 
+				to previous search results.</font>
+
+				<p>
+				<font size="-1"><strong>Tag Syntax</strong></font>
+				<p>
+				<font size="-1">The next set of results can be displayed using:</font>
+				<blockquote>
+					<pre>Click &lt;google:next&gt;here&lt;/google:next&gt; to view more results.
+					</pre>
+				</blockquote>
+				<p>
+				<font size="-1">Additionally, the link's target and style options can be specify 
+				using the <a href="#autolink">target, style and css</a> attributes</font>.
+				<p>
+
+				<a name="2_5"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>2.5 StartIndex &amp; 
+						EndIndex Tags </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <code>&lt;google:startIndex/&gt;</code> tag is
+
+
+				used to display the index (1-based) of the first search result in the current 
+				result set.<br>
+				The <code>&lt;google:endIndex/&gt;</code> tag is used to used to
+
+
+				display the index (1-based) of the last search result in the current result set.</font>
+				<p>
+
+				<a name="2_6"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>2.6 EstimatedTotal Tag </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <code>&lt;google:estimatedTotal/&gt;</code> tag is used to
+
+
+				display the estimated total number of results that exist for the current query.</font>
+				<p>
+
+				<a name="2_7"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>2.7 SearchComments Tag </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1"></font> <font size="-1">The <code>&lt;google:searchComments/&gt;</code> 
+				tag is used to
+
+
+				display the comments (if any) included with the current result set.</font>
+				<p>
+				<a name="2_8" id="2_8"></a>
+
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>2.8 SearchQuery Tag </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1"></font> <font size="-1">The <code>&lt;google:searchQuery/&gt;</code> 
+				tag is used to
+
+
+				display the text of the current query.
+
+				</font>
+				<p>
+				<a name="2_9" id="2_9"></a>
+
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>2.9 SearchTime Tag </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1"></font> <font size="-1">The <code>&lt;google:searchTime/&gt;</code> 
+				tag is used to
+
+
+				display the total server time used to return the search results, measured in 
+				seconds.</font>
+				<p>
+				<a name="2_10" id="2_10"></a>
+
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>2.10 SearchTips Tag </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1"></font> <font size="-1">The <code>&lt;google:searchTips/&gt;</code> 
+				tag is used to
+
+
+				display the tips (if any) included with the current result set.</font>
+			</blockquote>
+			<p>
+			<a name="cached" id="cached"></a>
+			<table cellpadding="2" width="100%" border="0">
+				<tr>
+					<td style="background-color: #fff9e4"><b>3. CachedPage &amp; Spelling Tags </b></td>
+				</tr>
+			</table>
+			<blockquote>
+				<a name="3_1"></a>
+				<p>
+				<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>3.1 CachedPage Tag </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The <code>&lt;google:cachedPage/&gt;</code> tag is used to 
+				display Google's cached web pages.</font>
+				<p>
+				<font size="-1"><b>Tag Syntax</b></font>
+				<p>
+				<font size="-1">The URL can be specified directly in the tag <em>body</em>, e.g.:</font>
+				<blockquote>
+					<pre>&lt;google:cachedPage&gt;http://www.google.com&lt;/google:cachedPage&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">or via the <em>q </em> request parameter:</font>
+				<blockquote>
+					<pre>(search page)<br>&lt;form action="cache.jsp"&gt; <br>  &lt;input type="text" name="q"&gt; <br>  ...<br>&lt;/form&gt;<br> <br>(result page)<br>&lt;google:cachedPage/&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">Upon submission the cached page will be displayed.</font>
+				<p>
+				<a name="3_2"></a>
+				<p>
+				<table bgcolor="#fff9e4" width="100%" border="0" cellspacing="0" cellpadding="2">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>3.2 Spelling  </b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">The &lt;google:spelling/&gt; tag is used to display Google's 
+				spelling suggestions.</font>
+				<p>
+				<font size="-1"><b>Tag Syntax</b></font>
+				<p>
+				<font size="-1">The text can be specified directly in the tag <em>body</em>, e.g.:</font>
+				<blockquote>
+					<pre>&lt;google:spelling&gt;long knifes&lt;/google:spelling&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">or via the <em>q </em> request parameter:</font>
+				<blockquote>
+					<pre>(search page)<br>&lt;form action="spelling.jsp"&gt; <br>  &lt;input type="text" name="q"&gt; <br>  ...<br>&lt;/form&gt;<br> <br>(result page)<br>&lt;google:spelling/&gt;</pre>
+				</blockquote>
+				<p>
+				<font size="-1">Upon submission the spelling suggestion (&quot;long knives&quot;) 
+				will be displayed.</font>
+			</blockquote>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

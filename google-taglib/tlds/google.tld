@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<!-- Tag library descriptor -->
+<taglib>
+	<!-- The version number of this tag library -->
+	<tlibversion>@version@</tlibversion>
+	<!-- The JSP specification version required to function -->
+	<jspversion>1.1</jspversion>
+	<!-- The short name of this tag library -->
+	<shortname>google</shortname>
+	<!-- Public URI that uniquely identifies this version of the tag library -->
+	<uri>http://www.thauvin.net/taglibs/google-taglib-@version@</uri>
+	<!-- General information about this tag library -->
+	<info>
+		The Google Tag Library.
+	</info>
+	<!-- CachedPage Tag -->
+	<tag>
+		<name>cachedPage</name>
+		<tagclass>net.thauvin.google.taglibs.CachedPage</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Displays a page cached by Google.</info>
+		<attribute>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<!-- Element Tag -->
+	<tag>
+		<name>element</name>
+		<tagclass>net.thauvin.google.taglibs.Element</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Displays the given property of the current search result element.</info>
+		<attribute>
+			<name>css</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<!-- EndIndex Tag -->
+	<tag>
+		<name>endIndex</name>
+		<tagclass>net.thauvin.google.taglibs.EndIndex</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Displays the current search result end index.</info>
+	</tag>
+	<!-- EstimatedTotal Tag -->
+	<tag>
+		<name>estimatedTotal</name>
+		<tagclass>net.thauvin.google.taglibs.EstimatedTotal</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Displays the estimated total results count of the current search.</info>
+	</tag>
+	<!-- Next Tag -->
+	<tag>
+		<name>next</name>
+		<tagclass>net.thauvin.google.taglibs.Next</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Displays a link to the next search result set.</info>
+		<attribute>
+			<name>css</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<!-- Previous Tag -->
+	<tag>
+		<name>previous</name>
+		<tagclass>net.thauvin.google.taglibs.Previous</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Displays a link to the previous search result set.</info>
+		<attribute>
+			<name>css</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<!-- Search Tag -->
+	<tag>
+		<name>search</name>
+		<tagclass>net.thauvin.google.taglibs.Search</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Performs a Google search.</info>
+		<attribute>
+			<name>cache</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>filter</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>lr</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>maxResults</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>safeSearch</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>site</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>start</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<!-- SearchComments Tag -->
+	<tag>
+		<name>searchComments</name>
+		<tagclass>net.thauvin.google.taglibs.SearchComments</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Displays the current search comments.</info>
+	</tag>
+	<!-- SearchQuery Tag -->
+	<tag>
+		<name>searchQuery</name>
+		<tagclass>net.thauvin.google.taglibs.SearchQuery</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Displays the current search query.</info>
+	</tag>
+	<!-- SearchResult Tag -->
+	<tag>
+		<name>searchResult</name>
+		<tagclass>net.thauvin.google.taglibs.SearchResult</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Loops through the current search results</info>
+	</tag>
+	<!-- SearchTime Tag -->
+	<tag>
+		<name>searchTime</name>
+		<tagclass>net.thauvin.google.taglibs.SearchTime</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Displays the elapsed time of the current search.</info>
+	</tag>
+	<!-- SearchTips Tag -->
+	<tag>
+		<name>searchTips</name>
+		<tagclass>net.thauvin.google.taglibs.SearchTips</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Displays the search tips of the current search.</info>
+	</tag>
+	<!-- Spelling Tag -->
+	<tag>
+		<name>spelling</name>
+		<tagclass>net.thauvin.google.taglibs.Spelling</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Performs a Google spelling suggestion.</info>
+		<attribute>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<!-- StartIndex Tag -->
+	<tag>
+		<name>startIndex</name>
+		<tagclass>net.thauvin.google.taglibs.StartIndex</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Displays the current search result start index.</info>
+	</tag>
+</taglib>
