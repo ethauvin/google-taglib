@@ -20,7 +20,6 @@
 		<info>Displays a page cached by Google.</info>
 		<attribute>
 			<name>key</name>
-			<info>Specifies the authentication key.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
@@ -33,25 +32,21 @@
 		<info>Displays the given property of the current search result element.</info>
 		<attribute>
 			<name>css</name>
-			<info>Specifies the HTML link's class attribute.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>name</name>
-			<info>Specifies the desired property of the current result set item.</info>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>style</name>
-			<info>Specifies the HTML link's style attribute.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>target</name>
-			<info>Specifies the HTML link's target attribute.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
@@ -78,19 +73,16 @@
 		<info>Displays a link to the next search result set.</info>
 		<attribute>
 			<name>css</name>
-			<info>Specifies the HTML link's class attribute.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>style</name>
-			<info>Specifies the HTML link's style attribute.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>target</name>
-			<info>Specifies the HTML link's target attribute.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
@@ -103,19 +95,16 @@
 		<info>Displays a link to the previous search result set.</info>
 		<attribute>
 			<name>css</name>
-			<info>Specifies the HTML link's class attribute.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>style</name>
-			<info>Specifies the HTML link's style attribute.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>target</name>
-			<info>Specifies the HTML link's target attribute.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
@@ -128,61 +117,51 @@
 		<info>Performs a Google search.</info>
 		<attribute>
 			<name>cache</name>
-			<info>Specifies whether results are cached between search requests.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>filter</name>
-			<info>Activates or deactivates automatic results filtering.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>key</name>
-			<info>Specifies the authentication key.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>lr</name>
-			<info>Restricts the search to documents within one or more languages.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>maxResults</name>
-			<info>Specifies the number of results desired per query.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>restrict</name>
-			<info>Restricts the search to a subset of the Google web index.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>safeSearch</name>
-			<info>Enables filtering of adult content in the search results.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>site</name>
-			<info>Restricts the search to documents within the specified site.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>start</name>
-			<info>Specifies the index of the first desired result.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>type</name>
-			<info>Specifies the file type to be searched.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
@@ -200,13 +179,12 @@
 		<tagclass>net.thauvin.google.taglibs.SearchQuery</tagclass>
 		<bodycontent>empty</bodycontent>
 		<info>Displays the current search query.</info>
-	    <attribute>
+		<attribute>
 			<name>type</name>
-			<info>Specifies whether the search keywords or full query should be returned.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
-    </tag>
+	</tag>
 	<!-- SearchResult Tag -->
 	<tag>
 		<name>searchResult</name>
@@ -236,7 +214,6 @@
 		<info>Performs a Google spelling suggestion.</info>
 		<attribute>
 			<name>key</name>
-			<info>Specifies the authentication key.</info>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_2.dtd">
+<!-- Tag library descriptor -->
+<taglib>
+	<!-- The version number of this tag library -->
+	<tlib-version>@version@</tlib-version>
+	<!-- The JSP specification version required to function -->
+	<jsp-version>1.2</jsp-version>
+	<!-- The short name of this tag library -->
+	<short-name>google</short-name>
+	<!-- Public URI that uniquely identifies this version of the tag library -->
+	<uri>http://www.thauvin.net/taglibs/google-taglib-@version@</uri>
+	<!-- General information about this tag library -->
+	<description>The Google Tag Library.</description>
+	<!-- CachedPage Tag -->
+	<tag>
+		<name>cachedPage</name>
+		<tag-class>net.thauvin.google.taglibs.CachedPage</tag-class>
+		<body-content>JSP</body-content>
+		<description>Displays a page cached by Google.</description>
+		<attribute>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the authentication key.</description>
+		</attribute>
+	</tag>
+	<!-- Element Tag -->
+	<tag>
+		<name>element</name>
+		<tag-class>net.thauvin.google.taglibs.Element</tag-class>
+		<body-content>empty</body-content>
+		<description>Displays the given property of the current search result element.</description>
+		<attribute>
+			<name>css</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the HTML link's class attribute.</description>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the desired property of the current result set item.</description>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the HTML link's style attribute.</description>
+		</attribute>
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the HTML link's target attribute.</description>
+		</attribute>
+	</tag>
+	<!-- EndIndex Tag -->
+	<tag>
+		<name>endIndex</name>
+		<tag-class>net.thauvin.google.taglibs.EndIndex</tag-class>
+		<body-content>empty</body-content>
+		<description>Displays the current search result end index.</description>
+	</tag>
+	<!-- EstimatedTotal Tag -->
+	<tag>
+		<name>estimatedTotal</name>
+		<tag-class>net.thauvin.google.taglibs.EstimatedTotal</tag-class>
+		<body-content>empty</body-content>
+		<description>Displays the estimated total results count of the current search.</description>
+	</tag>
+	<!-- Next Tag -->
+	<tag>
+		<name>next</name>
+		<tag-class>net.thauvin.google.taglibs.Next</tag-class>
+		<body-content>JSP</body-content>
+		<description>Displays a link to the next search result set.</description>
+		<attribute>
+			<name>css</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the HTML link's class attribute.</description>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the HTML link's style attribute.</description>
+		</attribute>
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the HTML link's target attribute.</description>
+		</attribute>
+	</tag>
+	<!-- Previous Tag -->
+	<tag>
+		<name>previous</name>
+		<tag-class>net.thauvin.google.taglibs.Previous</tag-class>
+		<body-content>JSP</body-content>
+		<description>Displays a link to the previous search result set.</description>
+		<attribute>
+			<name>css</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the HTML link's class attribute.</description>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the HTML link's style attribute.</description>
+		</attribute>
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the HTML link's target attribute.</description>
+		</attribute>
+	</tag>
+	<!-- Search Tag -->
+	<tag>
+		<name>search</name>
+		<tag-class>net.thauvin.google.taglibs.Search</tag-class>
+		<body-content>JSP</body-content>
+		<description>Performs a Google search.</description>
+		<attribute>
+			<name>cache</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies whether results are cached between search requests.</description>
+		</attribute>
+		<attribute>
+			<name>filter</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Activates or deactivates automatic results filtering.</description>
+		</attribute>
+		<attribute>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the authentication key.</description>
+		</attribute>
+		<attribute>
+			<name>lr</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Restricts the search to documents within one or more languages.</description>
+		</attribute>
+		<attribute>
+			<name>maxResults</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the number of results desired per query.</description>
+		</attribute>
+		<attribute>
+			<name>restrict</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Restricts the search to a subset of the Google web index.</description>
+		</attribute>
+		<attribute>
+			<name>safeSearch</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Enables filtering of adult content in the search results.</description>
+		</attribute>
+		<attribute>
+			<name>site</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Restricts the search to documents within the specified site.</description>
+		</attribute>
+		<attribute>
+			<name>start</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the index of the first desired result.</description>
+		</attribute>
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the file type to be searched.</description>
+		</attribute>
+	</tag>
+	<!-- SearchComments Tag -->
+	<tag>
+		<name>searchComments</name>
+		<tag-class>net.thauvin.google.taglibs.SearchComments</tag-class>
+		<body-content>empty</body-content>
+		<description>Displays the current search comments.</description>
+	</tag>
+	<!-- SearchQuery Tag -->
+	<tag>
+		<name>searchQuery</name>
+		<tag-class>net.thauvin.google.taglibs.SearchQuery</tag-class>
+		<body-content>empty</body-content>
+		<description>Displays the current search query.</description>
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies whether the search keywords or full query should be returned.</description>
+		</attribute>
+	</tag>
+	<!-- SearchResult Tag -->
+	<tag>
+		<name>searchResult</name>
+		<tag-class>net.thauvin.google.taglibs.SearchResult</tag-class>
+		<body-content>JSP</body-content>
+		<description>Loops through the current search results</description>
+	</tag>
+	<!-- SearchTime Tag -->
+	<tag>
+		<name>searchTime</name>
+		<tag-class>net.thauvin.google.taglibs.SearchTime</tag-class>
+		<body-content>empty</body-content>
+		<description>Displays the elapsed time of the current search.</description>
+	</tag>
+	<!-- SearchTips Tag -->
+	<tag>
+		<name>searchTips</name>
+		<tag-class>net.thauvin.google.taglibs.SearchTips</tag-class>
+		<body-content>empty</body-content>
+		<description>Displays the search tips of the current search.</description>
+	</tag>
+	<!-- Spelling Tag -->
+	<tag>
+		<name>spelling</name>
+		<tag-class>net.thauvin.google.taglibs.Spelling</tag-class>
+		<body-content>JSP</body-content>
+		<description>Performs a Google spelling suggestion.</description>
+		<attribute>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Specifies the authentication key.</description>
+		</attribute>
+	</tag>
+	<!-- StartIndex Tag -->
+	<tag>
+		<name>startIndex</name>
+		<tag-class>net.thauvin.google.taglibs.StartIndex</tag-class>
+		<body-content>empty</body-content>
+		<description>Displays the current search result start index.</description>
+	</tag>
+</taglib>
