@@ -103,6 +103,8 @@
 		<copy file="${licenses.dir}/${doc.license}" todir="${build.release}"/>
 		<!-- Copy the readme -->
 		<copy file="${doc.readme}" todir="${build.release}"/>
+		<!-- Copy the changes -->
+		<copy file="${doc.changes}" todir="${build.release}"/>
 		<!-- Copy the JAR -->
 		<copy file="${dist.dir}/${project.name}.jar" todir="${build.release}"/>
 		<!-- Freeze the mod dates -->
@@ -128,8 +130,9 @@
 				<include name="${ex.dir}/**"/>
 				<include name="${unit.dir}/**"/>
 				<include name="${doc.readme}"/>
-				<include name="${doc.dir}/**"/>
+				<include name="${doc.changes}"/>
 				<include name="${doc.src}"/>
+				<include name="${doc.dir}/**"/>
 				<include name="build.*"/>
 				<exclude name="${src.excludes}"/>
 			</tarfileset>
