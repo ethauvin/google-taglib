@@ -293,7 +293,7 @@ public class TagUtility
 	 * @param body The link body text.
 	 * @param target The link target.
 	 * @param style The link CSS style.
-	 * @param css The link CSS class
+	 * @param css The link CSS class.
 	 * @return A HTML reference link.
 	 */
 	public static final String buildRefLink(String url, String body,
