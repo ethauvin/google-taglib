@@ -1,0 +1,12 @@
+Version 1.0.1 (not yet released)
+  * Added a "type" attribute to the Search tag.
+      - It can be used to specify the type of documents (e.g.: pdf) to be
+        searched.
+  * Changed the behavior of the SearchQuery Tag.
+      - By default only the specified search keywords (or phrase) are
+        returned. To return the full query (including preset site and
+        file type options) the "type" attribute should be set to "full".
+
+Version 1.0 (released 10-Oct-2003)
+  * This is the first public release.
+  * Added support for various HTTP Proxy configuration context parameters.
