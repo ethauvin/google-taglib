@@ -36,20 +36,25 @@ Building the Source
 
 The Google Tag Library is built using Ant. 
 
-	http://jakarta.apache.org/ant/index.html
+	http://ant.apache.org/
 	
 
-To build the google.jar, to do the following:
+To build the JAR, to do the following:
 
 	ant
 	
-To build the google.tld, do the following:
+To build the TLDs, do the following:
 
-	ant tld
+	ant tlds
+	
+To build the Examples WAR, do the following:
+
+	ant examples
 	
 To list all available build targets, do the following:
 
 	ant -projecthelp
+
 
 ===========================================================================
 $Id$
