@@ -80,12 +80,26 @@ public abstract class KeySupport extends BodyTagSupport
 	}
 
 	/**
+	 * Release method.
+	 */
+	public void release()
+	{
+		super.release();
+
+		// Reset the key value
+		key = null;
+
+		// Reset the values
+		reset();
+	}
+
+	/**
 	 * Returns the key attribute.
 	 *
 	 * @return The attribute value.
 	 * @see #setKey(String)
 	 */
-	public String getKey()
+	protected String getKey()
 	{
 		if (TagUtility.isValidString(key, true))
 		{
@@ -128,20 +142,6 @@ public abstract class KeySupport extends BodyTagSupport
 		}
 
 		return "";
-	}
-
-	/**
-	 * Release method.
-	 */
-	public void release()
-	{
-		super.release();
-
-		// Reset the key value
-		key = null;
-
-		// Reset the values
-		reset();
 	}
 
 	/**

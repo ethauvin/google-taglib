@@ -57,7 +57,7 @@ public class Search extends QuerySupport
 	private String lr = GoogleSearchBean.DEFAULT_LR;
 	private String restrict = GoogleSearchBean.DEFAULT_RESTRICT;
 	private String site = GoogleSearchBean.DEFAULT_SITE;
-	private boolean cache = true;
+	private boolean cache = GoogleSearchBean.DEFAULT_CACHE;
 	private boolean filter = GoogleSearchBean.DEFAULT_FILTER;
 	private boolean safeSearch = GoogleSearchBean.DEFAULT_SAFE_SEARCH;
 	private int maxResults = GoogleSearchBean.DEFAULT_MAX_RESULTS;
@@ -67,7 +67,6 @@ public class Search extends QuerySupport
 	 * Sets the cache attribute.
 	 *
 	 * @param cache The new attribute value.
-	 * @see #getCache()
 	 */
 	public final void setCache(String cache)
 	{
@@ -75,21 +74,9 @@ public class Search extends QuerySupport
 	}
 
 	/**
-	 * Returns the cache attribute.
-	 *
-	 * @return The attribute value.
-	 * @see #setCache(String)
-	 */
-	public final boolean getCache()
-	{
-		return getBoolParam(TagUtility.CACHE_PARAM, cache);
-	}
-
-	/**
 	 * Sets the (related-query) filter attribute.
 	 *
 	 * @param filter The new attribute value.
-	 * @see #getFilter()
 	 */
 	public final void setFilter(String filter)
 	{
@@ -97,21 +84,9 @@ public class Search extends QuerySupport
 	}
 
 	/**
-	 * Returns the (related-query) filter attribute.
-	 *
-	 * @return The attribute value.
-	 * @see #setFilter(String)
-	 */
-	public final boolean getFilter()
-	{
-		return getBoolParam(TagUtility.FILTER_PARAM, filter);
-	}
-
-	/**
 	 * Sets the lr (language restrict) attribute.
 	 *
 	 * @param lr The new attribute value.
-	 * @see #getLr()
 	 */
 	public final void setLr(String lr)
 	{
@@ -119,21 +94,9 @@ public class Search extends QuerySupport
 	}
 
 	/**
-	 * Returns the lr (language restrict) attribute.
-	 *
-	 * @return The attribute value.
-	 * @see #setLr(String)
-	 */
-	public final String getLr()
-	{
-		return getStringParam(TagUtility.LR_PARAM, lr);
-	}
-
-	/**
 	 * Sets the maximum number of results to be returned.
 	 *
 	 * @param maxResults The new attribute value.
-	 * @see #getMaxResults()
 	 */
 	public final void setMaxResults(String maxResults)
 	{
@@ -148,21 +111,9 @@ public class Search extends QuerySupport
 	}
 
 	/**
-	 * Returns the maximum number of results to be returned.
-	 *
-	 * @return The attribute value.
-	 * @see #setMaxResults(String)
-	 */
-	public final int getMaxResults()
-	{
-		return getIntParam(TagUtility.MAX_RESULTS_PARAM, maxResults);
-	}
-
-	/**
 	 * Sets the restrict attribute.
 	 *
 	 * @param restrict The new restrict attribute.
-	 * @see #getRestrict()
 	 */
 	public final void setRestrict(String restrict)
 	{
@@ -170,21 +121,9 @@ public class Search extends QuerySupport
 	}
 
 	/**
-	 * Returns the restrict attribute.
-	 *
-	 * @return The attribute value.
-	 * @see #setRestrict(String)
-	 */
-	public final String getRestrict()
-	{
-		return getStringParam(TagUtility.RESTRICT_PARAM, restrict);
-	}
-
-	/**
 	 * Sets the safeSearch attribute.
 	 *
 	 * @param safeSearch The new attribute value.
-	 * @see #getSafeSearch()
 	 */
 	public final void setSafeSearch(String safeSearch)
 	{
@@ -192,21 +131,9 @@ public class Search extends QuerySupport
 	}
 
 	/**
-	 * Returns the safeSearch attribute.
-	 *
-	 * @return The attribute value.
-	 * @see #setSafeSearch(String)
-	 */
-	public final boolean getSafeSearch()
-	{
-		return getBoolParam(TagUtility.SAFE_SEARCH_PARAM, safeSearch);
-	}
-
-	/**
 	 * Sets the site attribute.
 	 *
 	 * @param site The new attribute value.
-	 * @see #getSite()
 	 */
 	public final void setSite(String site)
 	{
@@ -214,28 +141,9 @@ public class Search extends QuerySupport
 	}
 
 	/**
-	 * Returns the stie attribute.
-	 *
-	 * @return The attribute value.
-	 * @see #setSite(String)
-	 */
-	public final String getSite()
-	{
-		String site = getStringParam(TagUtility.SITE_PARAM, this.site);
-
-		if (site.length() > 0)
-		{
-			return ("site:" + site + ' ');
-		}
-
-		return "";
-	}
-
-	/**
 	 * Sets the start attribute.
 	 *
 	 * @param start The new attribute value.
-	 * @see #getStart()
 	 */
 	public final void setStart(String start)
 	{
@@ -247,17 +155,6 @@ public class Search extends QuerySupport
 		{
 			; // Do nothing
 		}
-	}
-
-	/**
-	 * Returns the start attribute.
-	 *
-	 * @return The attribute value.
-	 * @see #setStart(String)
-	 */
-	public final int getStart()
-	{
-		return getIntParam(TagUtility.START_PARAM, start);
 	}
 
 	/**
@@ -351,7 +248,7 @@ public class Search extends QuerySupport
 		restrict = GoogleSearchBean.DEFAULT_RESTRICT;
 		lr = GoogleSearchBean.DEFAULT_LR;
 		site = GoogleSearchBean.DEFAULT_SITE;
-		cache = true;
+		cache = GoogleSearchBean.DEFAULT_CACHE;
 
 		// Reset the bean
 		bean = null;
@@ -366,6 +263,93 @@ public class Search extends QuerySupport
 	protected void reset()
 	{
 		super.reset();
+	}
+
+	/**
+	 * Returns the cache attribute.
+	 *
+	 * @return The attribute value.
+	 */
+	private final boolean getCache()
+	{
+		return getBoolParam(TagUtility.CACHE_PARAM, cache);
+	}
+
+	/**
+	 * Returns the (related-query) filter attribute.
+	 *
+	 * @return The attribute value.
+	 */
+	private final boolean getFilter()
+	{
+		return getBoolParam(TagUtility.FILTER_PARAM, filter);
+	}
+
+	/**
+	 * Returns the lr (language restrict) attribute.
+	 *
+	 * @return The attribute value.
+	 */
+	private final String getLr()
+	{
+		return getStringParam(TagUtility.LR_PARAM, lr);
+	}
+
+	/**
+	 * Returns the maximum number of results to be returned.
+	 *
+	 * @return The attribute value.
+	 */
+	private final int getMaxResults()
+	{
+		return getIntParam(TagUtility.MAX_RESULTS_PARAM, maxResults);
+	}
+
+	/**
+	 * Returns the restrict attribute.
+	 *
+	 * @return The attribute value.
+	 */
+	private final String getRestrict()
+	{
+		return getStringParam(TagUtility.RESTRICT_PARAM, restrict);
+	}
+
+	/**
+	 * Returns the safeSearch attribute.
+	 *
+	 * @return The attribute value.
+	 */
+	private final boolean getSafeSearch()
+	{
+		return getBoolParam(TagUtility.SAFE_SEARCH_PARAM, safeSearch);
+	}
+
+	/**
+	 * Returns the site attribute.
+	 *
+	 * @return The attribute value.
+	 */
+	private final String getSite()
+	{
+		String site = getStringParam(TagUtility.SITE_PARAM, this.site);
+
+		if (site.length() > 0)
+		{
+			return ("site:" + site + ' ');
+		}
+
+		return "";
+	}
+
+	/**
+	 * Returns the start attribute.
+	 *
+	 * @return The attribute value.
+	 */
+	private final int getStart()
+	{
+		return getIntParam(TagUtility.START_PARAM, start);
 	}
 
 	/**
