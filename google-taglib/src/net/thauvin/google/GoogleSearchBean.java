@@ -365,10 +365,15 @@ public class GoogleSearchBean
 	 * encoding scheme of the current ODP category.</td></tr>
 	 * <tr><td><code>"relatedQuery"</code></td><td>Returns the related query
 	 * string, suitable for use as a {@link #getGoogleSearch(String) search}
-	 * query string.</td></tr>
+	 * query string.<br>For example:
+	 * <code>related:www.example.com/search?q=vacation%20hawaii</code></td></tr>
 	 * <tr><td><code>"cachedQuery"</code></td><td>Returns the cached query
 	 * string, suitable for use as a {@link #getCachedPage(String) cached} query
-	 * string.</td></tr>
+	 * string.<br>For example: <code>www.example.com/search?q=vacation%20hawaii</code>
+	 * </td></tr>
+	 * <tr><td><code>"staticQuery"</code></td><td>The static query, suitable for
+	 * display.<br>For example: <code>www.example.com/search?q=vacation hawaii</code>
+	 * </td></tr>
 	 * </table>
 	 *
 	 * @param index The element index.

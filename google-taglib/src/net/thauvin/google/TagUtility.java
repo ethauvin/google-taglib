@@ -267,7 +267,7 @@ public class TagUtility
 	/**
 	 * Builds a HTML reference link:
 	 * <p>
-	 * For example: <code><a href="url" class="css" style="style" target="target">body</a></code>.
+	 * For example: <code>&lt;a href="url" class="css" style="style" target="target"&gt;body&lt;/a&gt;</code>.
 	 *
 	 * @param url The reference URL.
 	 * @param body The link body text.
