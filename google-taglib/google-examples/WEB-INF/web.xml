@@ -8,6 +8,26 @@
 		<param-value/>
 		<description>The Google Web APIs client authorization key.</description>
 	</context-param>
+	<context-param>
+		<param-name>google_proxy_host</param-name>
+		<param-value/>
+		<description>The host to use as an HTTP proxy.</description>
+	</context-param>
+	<context-param>
+		<param-name>google_proxy_port</param-name>
+		<param-value/>
+		<description>The port to use as an HTTP proxy.</description>
+	</context-param>
+	<context-param>
+		<param-name>google_proxy_username</param-name>
+		<param-value/>
+		<description>The username required for the HTTP proxy.</description>
+	</context-param>
+	<context-param>
+		<param-name>google_proxy_password</param-name>
+		<param-value/>
+		<description>The password required for the HTTP proxy.</description>
+	</context-param>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

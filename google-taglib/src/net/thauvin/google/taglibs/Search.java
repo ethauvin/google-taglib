@@ -275,6 +275,15 @@ public class Search extends QuerySupport
 		{
 			try
 			{
+				bean.setProxyServer(pageContext.getServletContext()
+											   .getInitParameter(TagUtility.GOOGLE_PROXY_HOST),
+									pageContext.getServletContext()
+											   .getInitParameter(TagUtility.GOOGLE_PROXY_PORT),
+									pageContext.getServletContext()
+											   .getInitParameter(TagUtility.GOOGLE_PROXY_USERNAME),
+									pageContext.getServletContext()
+											   .getInitParameter(TagUtility.GOOGLE_PROXY_PASSWORD));
+
 				bean.getGoogleSearch(getKey(), getSite() + getQuery(),
 									 getStart(), getMaxResults(), getFilter(),
 									 getRestrict(), getSafeSearch(), getLr());

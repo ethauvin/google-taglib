@@ -138,7 +138,7 @@ public class GoogleSearchBean
 	{
 		service.setKey(key);
 
-		if ((key != null) && (key.trim().length() > 0))
+		if (isValidString(key))
 		{
 			keySet = true;
 		}
@@ -166,13 +166,56 @@ public class GoogleSearchBean
 	 * @param proxyUserName The user name to use for the HTTP proxy.
 	 * @param proxyPassword The password to use for the HTTP proxy.
 	 */
+	public void setProxyServer(String proxyHost, String proxyPort,
+							   String proxyUserName, String proxyPassword)
+	{
+		int port = -1;
+
+		if (isValidString(proxyPort))
+		{
+			try
+			{
+				port = Integer.valueOf(proxyPort).intValue();
+			}
+			catch (NumberFormatException e)
+			{
+				; // Do nothing.
+			}
+		}
+
+		setProxyServer(proxyHost, port, proxyUserName, proxyPassword);
+	}
+
+	/**
+	 * Sets the HTTP proxy host, port, user name and password.
+	 *
+	 * @param proxyHost The host to use for the HTTP proxy.
+	 * @param proxyPort The port to use for the HTTP proxy.
+	 * @param proxyUserName The user name to use for the HTTP proxy.
+	 * @param proxyPassword The password to use for the HTTP proxy.
+	 */
 	public void setProxyServer(String proxyHost, int proxyPort,
 							   String proxyUserName, String proxyPassword)
 	{
-		service.setProxyHost(proxyHost);
-		service.setProxyPort(proxyPort);
-		service.setProxyUserName(proxyUserName);
-		service.setProxyPassword(proxyPassword);
+		if (isValidString(proxyHost))
+		{
+			service.setProxyHost(proxyHost);
+
+			if (proxyPort > 0)
+			{
+				service.setProxyPort(proxyPort);
+			}
+
+			if (isValidString(proxyUserName))
+			{
+				service.setProxyUserName(proxyUserName);
+			}
+
+			if (isValidString(proxyPassword))
+			{
+				service.setProxyPassword(proxyPassword);
+			}
+		}
 	}
 
 	/**
@@ -639,6 +682,22 @@ public class GoogleSearchBean
 		// Reset the result and elements
 		result = null;
 		elements = null;
+	}
+
+	/**
+	 * Validates a string value by insuring it is not null or empty.
+	 *
+	 * @param stringValue The String value.
+	 * @return true if valid, false if not.
+	 */
+	private boolean isValidString(String stringValue)
+	{
+		if ((stringValue != null) && (stringValue.trim().length() > 0))
+		{
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

@@ -75,7 +75,8 @@ code {font-size:10pt}
 			<blockquote>
 				<font size="-1">1.1  <a href="#1_1">Installation</a><br>
 				1.2  <a href="#1_2">Google API Library</a><br>
-				1.3  <a href="#1_3">TagLib Directive </a></font>
+				1.3  <a href="#1_3">TagLib Directive </a><br>
+				1.4  <a href="#1_4">HTTP Proxy</a></font>
 			</blockquote>
 			<p>
 			<font size="-1"><b>&nbsp; &nbsp; 2. <a href="#search">Search Tags </a></b></font>
@@ -206,6 +207,31 @@ code {font-size:10pt}
 				<blockquote>
 					<pre>&lt;%@taglib uri=&quot;/google-taglib&quot; prefix=&quot;google&quot;%&gt;</pre>
 				</blockquote>
+				<p>
+				<a name="1_4"></a>
+				<table bgcolor="#fff9e4" cellpadding="2" width="100%" border="0">
+					<tr>
+						<td style="background-color: #fff9e4" width="80%"><b>1.4 HTTP Proxy</b></td>
+						<td style="background-color: #fff9e4" width="20%" nowrap><font size="-1"><a href="#top">Back 
+						to top</a> &nbsp; &nbsp; </font></td>
+					</tr>
+				</table>
+				<p>
+				<font size="-1">An HTTP Proxy server can be specified using context parameters in your 
+				web application deployment descriptor (<code>web.xml</code>) as follows:</font>
+				<blockquote>
+				  <pre>&lt;context-param&gt;<br>  &lt;param-name&gt;google_proxy_host&lt;/param-name&gt;<br>  &lt;param-value&gt;proxy.example.com&lt;/param-value&gt;<br>&lt;/context-param&gt;</pre>
+				  <pre>&lt;context-param&gt;<br>  &lt;param-name&gt;google_proxy_port&lt;/param-name&gt;<br>  &lt;param-value&gt;3128&lt;/param-value&gt;<br>&lt;/context-param&gt;</pre>  
+				</blockquote>
+				<p>
+				<font size="-1">Similarly, the HTTP Proxy user name and password (if any) may be specified using:</font>
+				<blockquote>
+				  <pre>&lt;context-param&gt;<br>  &lt;param-name&gt;google_proxy_username&lt;/param-name&gt;<br>  &lt;param-value&gt;john&lt;/param-value&gt;<br>&lt;/context-param&gt;</pre>
+				  <pre>&lt;context-param&gt;<br>  &lt;param-name&gt;google_proxy_password&lt;/param-name&gt;<br>  &lt;param-value&gt;opensesame&lt;/param-value&gt;<br>&lt;/context-param&gt;</pre>  
+				</blockquote>
+				<p>
+				<font size="-1">Please note that the Google Web APIs automatically check the standard <code>http.proxyHost</code>
+				and <code>http.proxyPort</code> Java system properties.</font>
 			</blockquote>
 			<p>
 			<a name="search" id="search"></a>

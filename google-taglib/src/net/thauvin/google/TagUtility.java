@@ -68,6 +68,26 @@ public class TagUtility
 	public static final String FILTER_PARAM = "filter";
 
 	/**
+	 * The HTTP proxy host.
+	 */
+	public static final String GOOGLE_PROXY_HOST = "google_proxy_host";
+
+	/**
+	 * The HTTP proxy password.
+	 */
+	public static final String GOOGLE_PROXY_PASSWORD = "google_proxy_password";
+
+	/**
+	 * The HTTP proxy port.
+	 */
+	public static final String GOOGLE_PROXY_PORT = "google_proxy_port";
+
+	/**
+	 * The HTTP proxy username.
+	 */
+	public static final String GOOGLE_PROXY_USERNAME = "google_proxy_username";
+
+	/**
 	 * The name of the Google Search bean attribute.
 	 */
 	public static final String GOOGLE_SEARCH_BEAN = "GoogleSearchBean";
