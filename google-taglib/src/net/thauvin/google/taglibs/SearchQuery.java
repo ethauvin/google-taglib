@@ -52,7 +52,7 @@ public class SearchQuery extends SearchResultSupport
 	private String type = null;
 
 	/**
-	 * Sets the type attribute
+	 * Sets the type attribute.
 	 *
 	 * @param type The new attribute value.
 	 * @since 1.0.1

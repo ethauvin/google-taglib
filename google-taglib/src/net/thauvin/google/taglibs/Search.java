@@ -158,7 +158,7 @@ public class Search extends QuerySupport
 	}
 
 	/**
-	 * Sets the (file) type attribute
+	 * Sets the (file) type attribute.
 	 *
 	 * @param type The new attribute value.
 	 * @since 1.0.1

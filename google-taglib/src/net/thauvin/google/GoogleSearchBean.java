@@ -50,7 +50,7 @@ import java.net.URLEncoder;
  *
  * @author Erik C. Thauvin
  * @created April 25, 2002
- * @version $Revision$
+ * @version $Revision$, $Date$
  * @since 1.0
  */
 public class GoogleSearchBean
@@ -173,6 +173,7 @@ public class GoogleSearchBean
 	 * Sets the search keywords.
 	 *
 	 * @param keywords The keywords
+     * @see #getKeywords() 
 	 */
 	public final void setKeywords(String keywords)
 	{
@@ -183,6 +184,7 @@ public class GoogleSearchBean
 	 * Returns the keywords.
 	 *
 	 * @return The keywords value.
+     * @see #setKeywords(String)
 	 */
 	public final String getKeywords()
 	{
