@@ -44,7 +44,7 @@ import net.thauvin.google.TagUtility;
  *
  * @author Erik C. Thauvin
  * @created April 29, 2002
- * @version $Revision$
+ * @version $Revision$, $Date$
  * @since 1.0
  */
 public class SearchQuery extends SearchResultSupport
@@ -55,6 +55,7 @@ public class SearchQuery extends SearchResultSupport
 	 * Sets the type attribute
 	 *
 	 * @param type The new attribute value.
+	 * @since 1.0.1
 	 */
 	public final void setType(String type)
 	{
@@ -78,12 +79,12 @@ public class SearchQuery extends SearchResultSupport
 	 */
 	protected String getPropertyName()
 	{
-        if (TagUtility.isValidString(type) && type.equalsIgnoreCase("full"))
-        {
-		    return "searchQuery";
-        }
+		if (TagUtility.isValidString(type) && type.equalsIgnoreCase("full"))
+		{
+			return "searchQuery";
+		}
 
-        return "searchKeywords";
+		return "searchKeywords";
 	}
 
 	/**

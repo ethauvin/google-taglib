@@ -47,7 +47,7 @@ import javax.servlet.jsp.PageContext;
  *
  * @author Erik C. Thauvin
  * @created April 25, 2002
- * @version $Revision$
+ * @version $Revision$, $Date$
  * @since 1.0
  */
 public class Search extends QuerySupport
@@ -161,6 +161,7 @@ public class Search extends QuerySupport
 	 * Sets the (file) type attribute
 	 *
 	 * @param type The new attribute value.
+	 * @since 1.0.1
 	 */
 	public final void setType(String type)
 	{
