@@ -1,6 +1,7 @@
 build
 dist
 javadoc
+tlddoc
 *.bat
 key.txt
 ChangeLog

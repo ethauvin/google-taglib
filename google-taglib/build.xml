@@ -27,6 +27,7 @@
 		<mkdir dir="${build.dir}"/>
 		<mkdir dir="${dist.dir}"/>
 		<mkdir dir="${javadoc.dir}"/>
+		<mkdir dir="${tlddoc.dir}"/>
 	</target>
 	<!-- Compile target -->
 	<target name="compile" depends="prepare" description="Compiles sources">
@@ -44,28 +45,33 @@
 			</fileset>
 		</jar>
 	</target>
+	<!-- TLD target -->
+	<target name="tld" description="Builds the TLD">
+		<!-- Copy the TLD -->
+		<filter token="version" value="${version}"/>
+		<copy file="${tlds.dir}/${project.name}.tld" todir="${dist.dir}" filtering="true"/>
+	</target>
 	<!-- WAR target -->
-	<target name="war" depends="jar" description="Builds the WAR">
+	<target name="war" depends="jar,tld" description="Builds the WAR">
 		<!-- Copy the WAR dir -->
 		<copy todir="${build.war}">
 			<fileset dir="${war.dir}"/>
 		</copy>
 		<!-- Copy the TLD -->
-		<filter token="version" value="${version}"/>
-		<copy file="${tlds.dir}/${project.name}.tld" todir="${build.war}/WEB-INF" filtering="true"/>
+		<copy file="${dist.dir}/${project.name}.tld" todir="${build.war}/WEB-INF"/>
 		<!-- Copy the license -->
 		<copy file="${licenses.dir}/${doc.license}" todir="${build.war}"/>
 		<!-- Copy the JAR -->
 		<copy file="${dist.dir}/${project.name}.jar" todir="${build.war}/WEB-INF/lib/"/>
 		<!-- Freeze the mod dates -->
 		<touch>
-    		<fileset dir="${build.war}"/>
-    	</touch>
+			<fileset dir="${build.war}"/>
+		</touch>
 		<!-- Create the web archive -->
 		<jar jarfile="${dist.dir}/${war.dir}-${version}.war" basedir="${build.war}"/>
 	</target>
 	<!-- Release target -->
-	<target name="release" depends="jar" description="Builds the release archives">
+	<target name="release" depends="jar,tld" description="Builds the release archives">
 		<mkdir dir="${build.release}"/>
 		<!-- Copy the TLD -->
 		<filter token="version" value="${version}"/>
@@ -78,14 +84,30 @@
 		<copy file="${dist.dir}/${project.name}.jar" todir="${build.release}"/>
 		<!-- Freeze the mod dates -->
 		<touch>
-    		<fileset dir="${build.release}"/>
-    	</touch>
+			<fileset dir="${build.release}"/>
+		</touch>
 		<!-- Create the ZIP archive -->
 		<zip destfile="${dist.dir}/${release.name}.zip" basedir="${build.release}"/>
 		<!-- Create the TAR archive -->
 		<tar tarfile="${dist.dir}/${release.name}.tar.gz" compression="gzip">
-    		<tarfileset dir="${build.release}" prefix="${release.name}" mode="644"/>
-    	</tar>
+			<tarfileset dir="${build.release}" prefix="${release.name}" mode="644"/>
+		</tar>
+	</target>
+	<!-- Src target -->
+	<target name="src" description="Builds the source archive">
+		<!-- Create the TAR archive -->
+		<tar tarfile="${dist.dir}/${release.name}-src.tar.gz" compression="gzip">
+			<tarfileset dir="${basedir}" prefix="${release.name}">
+				<include name="${src.dir}/**"/>
+				<include name="${tlds.dir}/**"/>
+				<include name="${lib.dir}/**"/>
+				<include name="${licenses.dir}/**"/>
+				<include name="${war.dir}/**"/>
+				<include name="${doc.readme}"/>
+				<include name="${doc.dir}/**"/>
+				<include name="build.*"/>
+			</tarfileset>
+		</tar>
 	</target>
 	<!-- Javadoc target -->
 	<target name="javadoc" depends="prepare" description="Builds the Javadoc">
@@ -96,12 +118,21 @@
 			<classpath refid="classpath"/>
 		</javadoc>
 	</target>
+	<!-- TLDDoc target -->
+	<target name="tlddoc" depends="prepare,tld" description="Builds the TLD documentation">
+		<delete quiet="true" includeEmptyDirs="true">
+			<fileset dir="${tlddoc.dir}" includes="*,*/**"/>
+		</delete>
+		<java jar="${lib.dir}/tlddoc.jar" failonerror="true" fork="true">
+			<arg line="-windowtitle &quot;${javadoc.title}&quot; -doctitle &quot;${javadoc.title}&quot; -d ${tlddoc.dir} ${dist.dir}/${project.name}.tld"/>
+		</java>
+	</target>
 	<!-- DocCheck target -->
 	<target name="doccheck" depends="prepare" description="Checks the Javadoc">
 		<delete quiet="true" includeEmptyDirs="true">
 			<fileset dir="${javadoc.dir}" includes="*,*/**"/>
 		</delete>
-		<javadoc sourcepath="${src.dir}" packagenames="${javadoc.packages}" destdir="${javadoc.dir}" verbose="false" failonerror="true" doclet="com.sun.tools.doclets.doccheck.DocCheck" docletpath="${lib.dir}\doccheck.jar">
+		<javadoc sourcepath="${src.dir}" packagenames="${javadoc.packages}" destdir="${javadoc.dir}" verbose="false" failonerror="true" doclet="com.sun.tools.doclets.doccheck.DocCheck" docletpath="${lib.dir}/doccheck.jar">
 			<classpath refid="classpath"/>
 		</javadoc>
 	</target>
