@@ -56,6 +56,11 @@ import java.net.URLEncoder;
 public class GoogleSearchBean
 {
 	/**
+	 * The default cache flag.
+	 */
+	public static final boolean DEFAULT_CACHE = true;
+
+	/**
 	 * The default related-queries filter.
 	 */
 	public static final boolean DEFAULT_FILTER = true;
