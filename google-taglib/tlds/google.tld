@@ -143,6 +143,11 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
+			<name>restrict</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
 			<name>safeSearch</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
