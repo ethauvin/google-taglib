@@ -112,7 +112,7 @@
 			<fileset dir="${build.release}"/>
 		</touch>
 		<!-- Create the ZIP archive -->
-		<zip destfile="${dist.dir}/${release.name}.zip" basedir="${build.release}"/>
+		<zip destfile="${dist.dir}/${release.name}.zip" basedir="${build.dir}" includes="${release.name}/**"/>
 		<!-- Create the TAR archive -->
 		<tar tarfile="${dist.dir}/${release.name}.tar.gz" compression="gzip">
 			<tarfileset dir="${build.release}" prefix="${release.name}" mode="644"/>
