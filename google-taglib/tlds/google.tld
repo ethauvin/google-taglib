@@ -181,7 +181,12 @@
 		<tagclass>net.thauvin.google.taglibs.SearchQuery</tagclass>
 		<bodycontent>empty</bodycontent>
 		<info>Displays the current search query.</info>
-	</tag>
+	    <attribute>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+    </tag>
 	<!-- SearchResult Tag -->
 	<tag>
 		<name>searchResult</name>

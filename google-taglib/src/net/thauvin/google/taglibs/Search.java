@@ -362,6 +362,8 @@ public class Search extends QuerySupport
 						pageContext.getServletContext()
 						.getInitParameter(TagUtility.GOOGLE_PROXY_PASSWORD));
 
+                bean.setKeywords(getQuery());
+                
 				bean.getGoogleSearch(getKey(), getSite() + getQuery() + getType(),
 						getStart(), getMaxResults(), getFilter(),
 						getRestrict(), getSafeSearch(), getLr());

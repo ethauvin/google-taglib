@@ -427,7 +427,7 @@ code {font-size:10pt}
 					<tr>
 						<td>
 							<div align="center">
-								<font size="-1"><b>site</b></font>
+								<font size="-1"><a name="2_1_site"><b>site</b></a></font>
 							</div>
 						</td>
 						<td><font size="-1">Restricts the search to documents  within the specfied
@@ -437,7 +437,7 @@ code {font-size:10pt}
 					<tr>
 						<td>
 							<div align="center">
-								<font size="-1"><b>type</b></font>
+								<font size="-1"><a name="2_1_filetype"><b>type</b></a></font>
 							</div>
 						</td>
 						<td><font size="-1">Specifies the <a href="http://www.google.com/help/faq_filetypes.html">file type</a> to be searched. (e.g.: pdf)</font></td>
@@ -675,12 +675,9 @@ code {font-size:10pt}
 				</table>
 				<p>
 				<font size="-1">The <code>&lt;google:next/&gt;</code> tag is used to
-
-
 				used to display a link to more search results.<br>
 				The <code>&lt;google:previous/&gt;</code> tag is used to used to display a link 
 				to previous search results.</font>
-
 				<p>
 				<font size="-1"><strong>Tag Syntax</strong></font>
 				<p>
@@ -739,11 +736,8 @@ code {font-size:10pt}
 					</tr>
 				</table>
 				<p>
-				<font size="-1"></font> <font size="-1">The <code>&lt;google:searchComments/&gt;</code> 
-				tag is used to
-
-
-				display the comments (if any) included with the current result set.</font>
+				<font size="-1">The <code>&lt;google:searchComments/&gt;</code> 
+				tag is used to display the comments (if any) included with the current result set.</font>
 				<p>
 				<a name="2_8" id="2_8"></a>
 
@@ -755,13 +749,14 @@ code {font-size:10pt}
 					</tr>
 				</table>
 				<p>
-				<font size="-1"></font> <font size="-1">The <code>&lt;google:searchQuery/&gt;</code> 
-				tag is used to
-
-
-				display the text of the current query.
-
+				<font size="-1">The <code>&lt;google:searchQuery/&gt;</code> tag is used to display
+				the text of the current query.
 				</font>
+				<p>
+				<font size="-1">The specified search keywords (or phrase) are returned by default.
+				To display the full query (including preset <a href="#2_1_site">site</a> and
+				<a href="#2_1_filetype">file type</a> options), set the <code>type</code> attribute
+				to <code>full</a>.</font>
 				<p>
 				<a name="2_9" id="2_9"></a>
 
@@ -773,12 +768,9 @@ code {font-size:10pt}
 					</tr>
 				</table>
 				<p>
-				<font size="-1"></font> <font size="-1">The <code>&lt;google:searchTime/&gt;</code> 
-				tag is used to
-
-
-				display the total server time used to return the search results, measured in 
-				seconds.</font>
+				<font size="-1">The <code>&lt;google:searchTime/&gt;</code> 
+				tag is used to display the total server time used to return the search results,
+				measured in seconds.</font>
 				<p>
 				<a name="2_10" id="2_10"></a>
 
@@ -790,11 +782,9 @@ code {font-size:10pt}
 					</tr>
 				</table>
 				<p>
-				<font size="-1"></font> <font size="-1">The <code>&lt;google:searchTips/&gt;</code> 
-				tag is used to
-
-
-				display the tips (if any) included with the current result set.</font>
+				<font size="-1">The <code>&lt;google:searchTips/&gt;</code> 
+				tag is used to display the tips (if any) included with the current result
+				set.</font>
 			</blockquote>
 			<p>
 			<a name="cached" id="cached"></a>

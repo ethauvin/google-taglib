@@ -115,6 +115,7 @@ public class GoogleSearchBean
 		"The authorization key has not been specified.";
 	private GoogleSearch service = null;
 	private GoogleSearchResult result = null;
+	private String keywords = null;
 	private GoogleSearchResultElement elements[] = null;
 	private boolean keySet = false;
 	private int maxResults = 10;
@@ -166,6 +167,26 @@ public class GoogleSearchBean
 	public final boolean isKeySet()
 	{
 		return keySet;
+	}
+
+	/**
+	 * Sets the search keywords.
+	 *
+	 * @param keywords The keywords
+	 */
+	public final void setKeywords(String keywords)
+	{
+		this.keywords = keywords;
+	}
+
+	/**
+	 * Returns the keywords.
+	 *
+	 * @return The keywords value.
+	 */
+	public final String getKeywords()
+	{
+		return this.keywords;
 	}
 
 	/**
@@ -578,6 +599,10 @@ public class GoogleSearchBean
 			{
 				return String.valueOf(result.getDocumentFiltering());
 			}
+            else if (property.equalsIgnoreCase("searchKeywords"))
+            {
+                return getKeywords();
+            }
 			else if (property.equalsIgnoreCase("searchQuery"))
 			{
 				return result.getSearchQuery();
