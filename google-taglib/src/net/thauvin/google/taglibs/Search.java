@@ -42,7 +42,6 @@ import net.thauvin.google.TagUtility;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 
-
 /**
  * A custom tag used to perform Google searches.
  *
@@ -54,14 +53,15 @@ import javax.servlet.jsp.PageContext;
 public class Search extends QuerySupport
 {
 	private GoogleSearchBean bean = null;
-	private String lr = GoogleSearchBean.DEFAULT_LR;
-	private String restrict = GoogleSearchBean.DEFAULT_RESTRICT;
-	private String site = GoogleSearchBean.DEFAULT_SITE;
 	private boolean cache = GoogleSearchBean.DEFAULT_CACHE;
 	private boolean filter = GoogleSearchBean.DEFAULT_FILTER;
-	private boolean safeSearch = GoogleSearchBean.DEFAULT_SAFE_SEARCH;
+	private String lr = GoogleSearchBean.DEFAULT_LR;
 	private int maxResults = GoogleSearchBean.DEFAULT_MAX_RESULTS;
+	private String restrict = GoogleSearchBean.DEFAULT_RESTRICT;
+	private boolean safeSearch = GoogleSearchBean.DEFAULT_SAFE_SEARCH;
+	private String site = GoogleSearchBean.DEFAULT_SITE;
 	private int start = GoogleSearchBean.DEFAULT_START;
+	private String type = GoogleSearchBean.DEFAULT_TYPE;
 
 	/**
 	 * Sets the cache attribute.
@@ -106,7 +106,7 @@ public class Search extends QuerySupport
 		}
 		catch (NumberFormatException e)
 		{
-			; // Do nothing
+			;// Do nothing
 		}
 	}
 
@@ -153,116 +153,18 @@ public class Search extends QuerySupport
 		}
 		catch (NumberFormatException e)
 		{
-			; // Do nothing
+			;// Do nothing
 		}
 	}
 
 	/**
-	 * doEndTag method.
+	 * Sets the (file) type attribute
 	 *
-	 * @return EVAL_PAGE
-	 * @exception JspException
+	 * @param type The new attribute value.
 	 */
-	public int doEndTag()
-				 throws JspException
+	public final void setType(String type)
 	{
-		final String query = getQuery();
-
-		if (TagUtility.isValidString(query, true))
-		{
-			try
-			{
-				bean.setProxyServer(pageContext.getServletContext()
-											   .getInitParameter(TagUtility.GOOGLE_PROXY_HOST),
-									pageContext.getServletContext()
-											   .getInitParameter(TagUtility.GOOGLE_PROXY_PORT),
-									pageContext.getServletContext()
-											   .getInitParameter(TagUtility.GOOGLE_PROXY_USERNAME),
-									pageContext.getServletContext()
-											   .getInitParameter(TagUtility.GOOGLE_PROXY_PASSWORD));
-
-				bean.getGoogleSearch(getKey(), getSite() + getQuery(),
-									 getStart(), getMaxResults(), getFilter(),
-									 getRestrict(), getSafeSearch(), getLr());
-			}
-			catch (Exception e)
-			{
-				throw TagUtility.outputError("search", e);
-			}
-		}
-		else if (!getCache())
-		{
-			bean.reset();
-		}
-
-		// Reset the values
-		reset();
-
-		return EVAL_PAGE;
-	}
-
-	/**
-	 * doStartTag method.
-	 *
-	 * @return EVAL_BODY_TAG.
-	 * @exception JspException
-	 */
-	public int doStartTag()
-				   throws JspException
-	{
-		// Get the Google bean
-		bean = TagUtility.getGoogleSearchBean(pageContext);
-
-		// Create a new bean if it doesn't exists
-		if (bean == null)
-		{
-			try
-			{
-				bean = new GoogleSearchBean();
-
-				// Set the bean as named session attribute
-				pageContext.setAttribute(TagUtility.GOOGLE_SEARCH_BEAN, bean,
-										 PageContext.SESSION_SCOPE);
-			}
-			catch (Exception e)
-			{
-				throw new JspException("An unknown error ocurred while creating the Google search bean.");
-			}
-		}
-
-		return EVAL_BODY_TAG;
-	}
-
-	/**
-	 * Release method.
-	 */
-	public void release()
-	{
-		super.release();
-
-		// Reset all attributes
-		start = GoogleSearchBean.DEFAULT_START;
-		maxResults = GoogleSearchBean.DEFAULT_MAX_RESULTS;
-		filter = GoogleSearchBean.DEFAULT_FILTER;
-		safeSearch = GoogleSearchBean.DEFAULT_SAFE_SEARCH;
-		restrict = GoogleSearchBean.DEFAULT_RESTRICT;
-		lr = GoogleSearchBean.DEFAULT_LR;
-		site = GoogleSearchBean.DEFAULT_SITE;
-		cache = GoogleSearchBean.DEFAULT_CACHE;
-
-		// Reset the bean
-		bean = null;
-
-		// Reset the values
-		reset();
-	}
-
-	/**
-	 * Reset the values.
-	 */
-	protected void reset()
-	{
-		super.reset();
+		this.type = type;
 	}
 
 	/**
@@ -353,6 +255,23 @@ public class Search extends QuerySupport
 	}
 
 	/**
+	 * Returns the (file) type attribute.
+	 *
+	 * @return The attribute value
+	 */
+	private final String getType()
+	{
+		String type = getStringParam(TagUtility.TYPE_PARAM, this.type);
+
+		if (type.length() > 0)
+		{
+			return (" filetype:" + type);
+		}
+
+		return "";
+	}
+
+	/**
 	 * Converts a request parameter to a boolean.
 	 *
 	 * @param paramName The parameter name.
@@ -362,7 +281,7 @@ public class Search extends QuerySupport
 	private boolean getBoolParam(String paramName, boolean defaultValue)
 	{
 		String param =
-			TagUtility.getParameter(pageContext.getRequest(), paramName);
+				TagUtility.getParameter(pageContext.getRequest(), paramName);
 
 		if (TagUtility.isValidString(param, true))
 		{
@@ -382,7 +301,7 @@ public class Search extends QuerySupport
 	private int getIntParam(String paramName, int defaultValue)
 	{
 		String param =
-			TagUtility.getParameter(pageContext.getRequest(), paramName);
+				TagUtility.getParameter(pageContext.getRequest(), paramName);
 
 		if (TagUtility.isValidString(param, true))
 		{
@@ -392,7 +311,7 @@ public class Search extends QuerySupport
 			}
 			catch (NumberFormatException e)
 			{
-				; // Do nothing
+				;// Do nothing
 			}
 		}
 
@@ -409,7 +328,7 @@ public class Search extends QuerySupport
 	private String getStringParam(String paramName, String defaultValue)
 	{
 		String param =
-			TagUtility.getParameter(pageContext.getRequest(), paramName);
+				TagUtility.getParameter(pageContext.getRequest(), paramName);
 
 		if (TagUtility.isValidString(param, true))
 		{
@@ -417,5 +336,114 @@ public class Search extends QuerySupport
 		}
 
 		return defaultValue;
+	}
+
+	/**
+	 * doEndTag method.
+	 *
+	 * @return EVAL_PAGE
+	 * @exception JspException
+	 */
+	public int doEndTag()
+		throws JspException
+	{
+		final String query = getQuery();
+
+		if (TagUtility.isValidString(query, true))
+		{
+			try
+			{
+				bean.setProxyServer(pageContext.getServletContext()
+						.getInitParameter(TagUtility.GOOGLE_PROXY_HOST),
+						pageContext.getServletContext()
+						.getInitParameter(TagUtility.GOOGLE_PROXY_PORT),
+						pageContext.getServletContext()
+						.getInitParameter(TagUtility.GOOGLE_PROXY_USERNAME),
+						pageContext.getServletContext()
+						.getInitParameter(TagUtility.GOOGLE_PROXY_PASSWORD));
+
+				bean.getGoogleSearch(getKey(), getSite() + getQuery() + getType(),
+						getStart(), getMaxResults(), getFilter(),
+						getRestrict(), getSafeSearch(), getLr());
+			}
+			catch (Exception e)
+			{
+				throw TagUtility.outputError("search", e);
+			}
+		}
+		else if (!getCache())
+		{
+			bean.reset();
+		}
+
+		// Reset the values
+		reset();
+
+		return EVAL_PAGE;
+	}
+
+	/**
+	 * doStartTag method.
+	 *
+	 * @return EVAL_BODY_TAG.
+	 * @exception JspException
+	 */
+	public int doStartTag()
+		throws JspException
+	{
+		// Get the Google bean
+		bean = TagUtility.getGoogleSearchBean(pageContext);
+
+		// Create a new bean if it doesn't exists
+		if (bean == null)
+		{
+			try
+			{
+				bean = new GoogleSearchBean();
+
+				// Set the bean as named session attribute
+				pageContext.setAttribute(TagUtility.GOOGLE_SEARCH_BEAN, bean,
+						PageContext.SESSION_SCOPE);
+			}
+			catch (Exception e)
+			{
+				throw new JspException("An unknown error ocurred while creating the Google search bean.");
+			}
+		}
+
+		return EVAL_BODY_TAG;
+	}
+
+	/**
+	 * Release method.
+	 */
+	public void release()
+	{
+		super.release();
+
+		// Reset all attributes
+		start = GoogleSearchBean.DEFAULT_START;
+		maxResults = GoogleSearchBean.DEFAULT_MAX_RESULTS;
+		filter = GoogleSearchBean.DEFAULT_FILTER;
+		safeSearch = GoogleSearchBean.DEFAULT_SAFE_SEARCH;
+		restrict = GoogleSearchBean.DEFAULT_RESTRICT;
+		lr = GoogleSearchBean.DEFAULT_LR;
+		site = GoogleSearchBean.DEFAULT_SITE;
+		cache = GoogleSearchBean.DEFAULT_CACHE;
+		type = GoogleSearchBean.DEFAULT_TYPE;
+
+		// Reset the bean
+		bean = null;
+
+		// Reset the values
+		reset();
+	}
+
+	/**
+	 * Reset the values.
+	 */
+	protected void reset()
+	{
+		super.reset();
 	}
 }

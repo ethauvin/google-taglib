@@ -148,6 +148,11 @@ public class TagUtility
 	public static final String START_PARAM = "start";
 
 	/**
+	 * The name of the (file) type request parameter.
+	 */
+	public static final String TYPE_PARAM = "type";
+
+	/**
 	 * Protected constructor to disable instantiation.
 	 */
 	protected TagUtility()

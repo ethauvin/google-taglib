@@ -96,6 +96,11 @@ public class GoogleSearchBean
 	public static final int DEFAULT_START = 0;
 
 	/**
+	 * The default filetype.
+	 */
+	public static final String DEFAULT_TYPE = "";
+
+	/**
 	 * The <em>next</em> keyword.
 	 */
 	public static final String NEXT_KEYWORD = "next";
