@@ -7,8 +7,8 @@ Overview
 
 This README file describes the Google RSS Tag Library distribution.
 
-The Google RSS Tag Library is an extension to, and thus requires,
-the Google Tag Library, which can be found at:
+The Google RSS Tag Library is an extension to, and thus requires, the
+Google Tag Library, which can be found at:
 
 	<http://google-taglib.sourceforge.net/>
 

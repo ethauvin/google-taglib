@@ -25,6 +25,7 @@
 	</path>
 	<!-- Prepare target -->
 	<target name="prepare">
+		<ant dir="${google.dir}" inheritAll="false" inheritRefs="false" target="${google.target}"/>
 		<mkdir dir="${build.dir}"/>
 		<mkdir dir="${dist.dir}"/>
 	</target>
@@ -95,6 +96,21 @@
 		</touch>
 		<!-- Create the web archive -->
 		<jar jarfile="${dist.dir}/${ex.dir}-${version}.war" basedir="${build.ex}"/>
+	</target>
+	<!-- Src target -->
+	<target name="src" description="Builds the source archive">
+		<!-- Create the TAR archive -->
+		<tar tarfile="${dist.dir}/${release.name}-src.tar.gz" compression="gzip">
+			<tarfileset dir="${basedir}" prefix="${release.name}">
+				<include name="${src.dir}/**"/>
+				<include name="${tlds.dir}/**"/>
+				<include name="${ex.dir}/**"/>
+				<include name="${doc.readme}"/>
+				<include name="${doc.license}"/>
+				<include name="${doc.src}"/>
+				<include name="build.*"/>
+			</tarfileset>
+		</tar>
 	</target>
 	<!-- Clean Build target -->
 	<target name="clean-build" description="Cleans the build directory">
