@@ -5,7 +5,8 @@
 	<property file="build.properties"/>
 	<!-- Build Locations -->
 	<property name="build.library" value="${build.dir}/${project.name}"/>
-	<property name="build.war" value="${build.dir}/${war.dir}"/>
+	<property name="build.ex" value="${build.dir}/${ex.dir}"/>
+	<property name="build.unit" value="${build.dir}/${unit.dir}"/>
 	<property name="build.release" value="${build.dir}/${release.name}"/>
 	<!-- Jar excludes directories and files -->
 	<patternset id="jar.excludes">
@@ -45,33 +46,55 @@
 			</fileset>
 		</jar>
 	</target>
-	<!-- TLD target -->
-	<target name="tld" description="Builds the TLD">
-		<!-- Copy the TLD -->
+	<!-- TLDs target -->
+	<target name="tlds" description="Builds the TLDs">
+		<!-- Copy the TLDs -->
 		<filter token="version" value="${version}"/>
 		<copy file="${tlds.dir}/${project.name}.tld" todir="${dist.dir}" filtering="true"/>
+		<copy file="${tlds.dir}/${project.name}-1.2.tld" todir="${dist.dir}" filtering="true"/>
 	</target>
-	<!-- WAR target -->
-	<target name="war" depends="jar,tld" description="Builds the WAR">
+	<!-- Examples target -->
+	<target name="examples" depends="jar,tlds" description="Builds the Examples WAR">
 		<!-- Copy the WAR dir -->
-		<copy todir="${build.war}">
-			<fileset dir="${war.dir}"/>
+		<copy todir="${build.ex}">
+			<fileset dir="${ex.dir}"/>
 		</copy>
 		<!-- Copy the TLD -->
-		<copy file="${dist.dir}/${project.name}.tld" todir="${build.war}/WEB-INF"/>
+		<copy file="${dist.dir}/${project.name}.tld" todir="${build.ex}/WEB-INF"/>
 		<!-- Copy the license -->
-		<copy file="${licenses.dir}/${doc.license}" todir="${build.war}"/>
+		<copy file="${licenses.dir}/${doc.license}" todir="${build.ex}"/>
 		<!-- Copy the JAR -->
-		<copy file="${dist.dir}/${project.name}.jar" todir="${build.war}/WEB-INF/lib/"/>
+		<copy file="${dist.dir}/${project.name}.jar" todir="${build.ex}/WEB-INF/lib/"/>
 		<!-- Freeze the mod dates -->
 		<touch>
-			<fileset dir="${build.war}"/>
+			<fileset dir="${build.ex}"/>
 		</touch>
 		<!-- Create the web archive -->
-		<jar jarfile="${dist.dir}/${war.dir}-${version}.war" basedir="${build.war}"/>
+		<jar jarfile="${dist.dir}/${ex.dir}-${version}.war" basedir="${build.ex}"/>
+	</target>
+	<!-- TagUnit target -->
+	<target name="tagunit" depends="jar,tlds" description="Builds the TagUnit WAR">
+		<!-- Copy the WAR dir -->
+		<copy todir="${build.unit}">
+			<fileset dir="${unit.dir}"/>
+		</copy>
+		<!-- Copy the TLD -->
+		<copy file="${dist.dir}/${project.name}.tld" todir="${build.unit}/WEB-INF"/>
+		<!-- Copy the license -->
+		<copy file="${licenses.dir}/${doc.license}" todir="${build.unit}"/>
+		<!-- Copy the JAR -->
+		<copy file="${dist.dir}/${project.name}.jar" todir="${build.unit}/WEB-INF/lib/"/>
+		<!-- Copy the TagUnit lib -->
+		<copy file="${lib.dir}/${unit.lib}" todir="${build.unit}/WEB-INF/lib/"/>
+		<!-- Freeze the mod dates -->
+		<touch>
+			<fileset dir="${build.unit}"/>
+		</touch>
+		<!-- Create the web archive -->
+		<jar jarfile="${dist.dir}/${unit.dir}-${version}.war" basedir="${build.unit}"/>
 	</target>
 	<!-- Release target -->
-	<target name="release" depends="jar,tld" description="Builds the release archives">
+	<target name="release" depends="jar,tlds" description="Builds the release archives">
 		<mkdir dir="${build.release}"/>
 		<!-- Copy the TLD -->
 		<filter token="version" value="${version}"/>
@@ -102,10 +125,13 @@
 				<include name="${tlds.dir}/**"/>
 				<include name="${lib.dir}/**"/>
 				<include name="${licenses.dir}/**"/>
-				<include name="${war.dir}/**"/>
+				<include name="${ex.dir}/**"/>
+				<include name="${unit.dir}/**"/>
 				<include name="${doc.readme}"/>
 				<include name="${doc.dir}/**"/>
+				<include name="${doc.src}"/>
 				<include name="build.*"/>
+				<exclude name="${src.excludes}"/>
 			</tarfileset>
 		</tar>
 	</target>
@@ -119,12 +145,12 @@
 		</javadoc>
 	</target>
 	<!-- TLDDoc target -->
-	<target name="tlddoc" depends="prepare,tld" description="Builds the TLD documentation">
+	<target name="tlddoc" depends="prepare,tlds" description="Builds the TLD documentation">
 		<delete quiet="true" includeEmptyDirs="true">
 			<fileset dir="${tlddoc.dir}" includes="*,*/**"/>
 		</delete>
 		<java jar="${lib.dir}/tlddoc.jar" failonerror="true" fork="true">
-			<arg line="-windowtitle &quot;${javadoc.title}&quot; -doctitle &quot;${javadoc.title}&quot; -d ${tlddoc.dir} ${dist.dir}/${project.name}.tld"/>
+			<arg line="-windowtitle &quot;${javadoc.title}&quot; -doctitle &quot;${javadoc.title}&quot; -d ${tlddoc.dir} ${dist.dir}/${project.name}-1.2.tld"/>
 		</java>
 	</target>
 	<!-- DocCheck target -->
